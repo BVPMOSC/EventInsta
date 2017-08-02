@@ -15,7 +15,7 @@ const EventCard = () => (
         <CardActions>
             <FlatButton label="Going"  primary={true}/>
             <FlatButton label="Invite"  secondary={true}/>
-            <FlatButton label="Decline" />
+           
         </CardActions>
     </Card>
 );
