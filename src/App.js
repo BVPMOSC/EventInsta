@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBarExampleIcon from './Components/AppBarExampleIcon'
+import EventCard from './Components/EventCard';
+import { Grid, Row, Col } from 'react-flexbox-grid';
 import {
   teal500, teal700,
   pinkA200,
@@ -38,7 +40,23 @@ class App extends Component {
   render() {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
-        <AppBarExampleIcon />
+        <div >
+          <AppBarExampleIcon />
+          <Grid fluid>
+            <Row>
+              <Col xs={12} md={4} ld={4}>
+                <EventCard />
+              </Col>
+              <Col xs={12} md={4} ld={4}>
+                <EventCard />
+              </Col>
+              <Col xs={12} md={4} ld={4}>
+                <EventCard />
+              </Col>
+            </Row>
+          </Grid>
+
+        </div>
       </MuiThemeProvider>
     );
   }
