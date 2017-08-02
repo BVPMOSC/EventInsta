@@ -6,16 +6,16 @@ const EventCard = () => (
     <Card>
         <CardHeader
             title="Aniket965"
-            subtitle="BVPMOSC"
+            subtitle="MTG"
             avatar="images/avatar.jpg"
         />
-        <CardMedia overlay={<CardTitle title="Hacking The World" subtitle="hacking Begins.." />}>
-            <img src="images/banner.jpg" alt="" />
+        <CardMedia overlay={<CardTitle title="BVEST 2015" subtitle="hacking Begins.." />}>
+            <img src="images/flex1.jpg" alt="" />
         </CardMedia>
         <CardActions>
             <FlatButton label="Going"  primary={true}/>
             <FlatButton label="Invite"  secondary={true}/>
-            <FlatButton label="Not Intrested" />
+            <FlatButton label="Decline" />
         </CardActions>
     </Card>
 );
