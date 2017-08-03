@@ -10,6 +10,7 @@ import {
 } from 'material-ui/styles/colors';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Footer from './Components/Footer'
+import * as firebase from 'firebase';
 injectTapEventPlugin();
 
 const muiTheme = getMuiTheme({
@@ -36,6 +37,26 @@ const muiTheme = getMuiTheme({
 
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    // we can change this after we decide on the structure of database 
+    this.state = {  };
+  }
+  // AppBarExample Component which will then fill in the details and render
+  // get the number of event from firebase and pass the event ID as prop to 
+  componentDidMount(){
+    
+    const rootRef=firebase.database().ref().child('pwa');
+    const speedRef=rootRef.child('random-key');
+    speedRef.on('value',snap=>{
+      this.setState({
+        
+      })
+    })
+
+  }
+
+
   render() {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>

@@ -12,6 +12,7 @@ import ListItem from 'material-ui/List/ListItem';
 import Avatar from 'material-ui/Avatar';
 import LatestEvents from './LatestEvents'
 import TagsPage from './TagsPage'
+import * as firebase from 'firebase';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 const iconStyles = {
   marginRight: 24,
@@ -26,9 +27,21 @@ export default class AppBarExampleIcon extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { open: false };
-  }
 
+    // we can change this after we decide on the structure of database 
+    this.state = { open: false,eventName:'Event Name',eventDescription:'Event Description here' };
+  }
+  componentDidMount(){
+    const rootRef=firebase.database().ref().child('pwa');
+    const speedRef=rootRef.child('random-key');
+    speedRef.on('value',snap=>{
+      this.setState({
+        eventName:snap.val().name,
+        eventDescription:snap.val().description
+      })
+    })
+
+  }
   handleToggle = () => this.setState({ open: !this.state.open });
 
   handleClose = () => this.setState({ open: false });
@@ -37,7 +50,7 @@ export default class AppBarExampleIcon extends React.Component {
     return (
       <div>
         <AppBar
-          title="Eveinsta"
+          title="EventInsta"
           style={fixedBar}
           iconClassNameRight="muidocs-icon-navigation-expand-more"
           onLeftIconButtonTouchTap={this.handleToggle}
