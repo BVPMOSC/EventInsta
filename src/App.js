@@ -13,7 +13,7 @@ import {
   white, darkBlack, fullBlack,
 } from 'material-ui/styles/colors';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-
+import Footer from './Components/Footer'
 injectTapEventPlugin();
 
 const muiTheme = getMuiTheme({
@@ -53,8 +53,6 @@ class App extends Component {
               </Col>
             </Row>
             <Row>
-
-
               <Col xs={12} sm={6} md={4} lg={4}>
                 <EventCard />
                 <h1></h1>
@@ -66,10 +64,28 @@ class App extends Component {
               <Col xs={12} sm={6} md={4} lg={4}>
                 <EventCard />
               </Col>
-
-              <h1></h1>
+               <Col xs={12} sm={6} md={4} lg={4}>
+                <EventCard />
+              </Col>
+               <Col xs={12} sm={6} md={4} lg={4}>
+                <EventCard />
+              </Col>
+               <Col xs={12} sm={6} md={4} lg={4}>
+                <EventCard />
+              </Col>
+               <Col xs={12} sm={6} md={4} lg={4}>
+                <EventCard />
+              </Col>
+               <Col xs={12} sm={6} md={4} lg={4}>
+                <EventCard />
+              </Col>
+             
             </Row>
+    
           </Grid>
+        
+                  <Footer />
+        
         </div>
       </MuiThemeProvider>
     );
