@@ -14,6 +14,10 @@ import Avatar from 'material-ui/Avatar';
 
 const iconStyles = {
   marginRight: 24,
+  fontSize:24
+};
+const fixedBar = {
+  position:"fixed",
 };
 
 
@@ -33,6 +37,7 @@ export default class AppBarExampleIcon extends React.Component {
       <div>
         <AppBar
           title="Eveinsta"
+          style={fixedBar}
           iconClassNameRight="muidocs-icon-navigation-expand-more"
           onLeftIconButtonTouchTap={this.handleToggle}
         />

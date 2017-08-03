@@ -5,6 +5,7 @@ import FaGithub from 'react-icons/lib/fa/github'
 import FaFacebookSquare from 'react-icons/lib/fa/facebook-square'
 const iconStyles = {
   marginRight: 8,
+  fontSize:16
 };
 
 class Footer extends Component {
