@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './Footer.css';
 import FaGlobe from 'react-icons/lib/fa/globe'
 import FaGithub from 'react-icons/lib/fa/github'
+import FaFacebookSquare from 'react-icons/lib/fa/facebook-square'
 const iconStyles = {
   marginRight: 8,
 };
@@ -22,6 +23,7 @@ class Footer extends Component {
                 <ul>
                   <li><a className="grey-text text-lighten-3" href="http://bvpmosc.tech/    "><FaGlobe style={iconStyles} />Visit</a></li>
                   <li><a className="grey-text text-lighten-3" href="https://github.com/BVPMOSC"><FaGithub style={iconStyles} />Github</a></li>
+                  <li><a className="grey-text text-lighten-3" href="https://www.facebook.com/BVPMOSC/"><FaFacebookSquare style={iconStyles} />Facebook Page</a></li>
                 </ul>
               </div>
             </div>

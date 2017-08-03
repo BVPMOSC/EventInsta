@@ -63,21 +63,27 @@ class App extends Component {
               </Col>
               <Col xs={12} sm={6} md={4} lg={4}>
                 <EventCard />
+                 <h1></h1>
               </Col>
                <Col xs={12} sm={6} md={4} lg={4}>
                 <EventCard />
+                 <h1></h1>
               </Col>
                <Col xs={12} sm={6} md={4} lg={4}>
                 <EventCard />
+                 <h1></h1>
               </Col>
                <Col xs={12} sm={6} md={4} lg={4}>
                 <EventCard />
+                 <h1></h1>
               </Col>
                <Col xs={12} sm={6} md={4} lg={4}>
                 <EventCard />
+                 <h1></h1>
               </Col>
                <Col xs={12} sm={6} md={4} lg={4}>
                 <EventCard />
+                 <h1></h1>
               </Col>
              
             </Row>
