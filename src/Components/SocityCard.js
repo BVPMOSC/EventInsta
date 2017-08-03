@@ -17,8 +17,6 @@ class SocityCard extends Component {
         </CardMedia>
         <CardActions>
             <FlatButton label="Follow"  primary={true} icon={<RssIcon/>}/>
-            <FlatButton label="Unfollow"  secondary={true} icon={<CloseIcon/>}/>
-           
         </CardActions>
     </Card>
         );
