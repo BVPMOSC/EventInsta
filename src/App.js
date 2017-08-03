@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBarExampleIcon from './Components/AppBarExampleIcon'
-import EventCard from './Components/EventCard';
-import { Grid, Row, Col } from 'react-flexbox-grid';
 import {
   teal500, teal700,
   pinkA200,
@@ -35,61 +33,16 @@ const muiTheme = getMuiTheme({
 });
 
 
+
+
 class App extends Component {
-
-
   render() {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
+
         <div >
           <AppBarExampleIcon />
-
-          <Grid fluid>
-            <Row>
-              <Col xs={12} md={12} lg={12}>
-                <h1></h1>
-              </Col>
-            </Row>
-            <Row>
-              <Col xs={12} sm={6} md={4} lg={4}>
-                <EventCard />
-                <h1></h1>
-              </Col>
-              <Col xs={12} sm={6} md={4} lg={4}>
-                <EventCard />
-                <h1></h1>
-              </Col>
-              <Col xs={12} sm={6} md={4} lg={4}>
-                <EventCard />
-                 <h1></h1>
-              </Col>
-               <Col xs={12} sm={6} md={4} lg={4}>
-                <EventCard />
-                 <h1></h1>
-              </Col>
-               <Col xs={12} sm={6} md={4} lg={4}>
-                <EventCard />
-                 <h1></h1>
-              </Col>
-               <Col xs={12} sm={6} md={4} lg={4}>
-                <EventCard />
-                 <h1></h1>
-              </Col>
-               <Col xs={12} sm={6} md={4} lg={4}>
-                <EventCard />
-                 <h1></h1>
-              </Col>
-               <Col xs={12} sm={6} md={4} lg={4}>
-                <EventCard />
-                 <h1></h1>
-              </Col>
-             
-            </Row>
-    
-          </Grid>
-        
-                  <Footer />
-        
+          <Footer />
         </div>
       </MuiThemeProvider>
     );
