@@ -3,8 +3,6 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBarExampleIcon from './Components/AppBarExampleIcon'
 import EventCard from './Components/EventCard';
-import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/MenuItem';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import {
   teal500, teal700,

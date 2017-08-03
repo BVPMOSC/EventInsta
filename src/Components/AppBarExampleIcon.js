@@ -3,7 +3,6 @@ import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import Divider from 'material-ui/Divider';
 import MenuItem from 'material-ui/MenuItem';
-import FontIcon from 'material-ui/FontIcon';
 import MdLabel from 'react-icons/lib/md/label'
 import MdExitToApp from 'react-icons/lib/md/exit-to-app'
 import MdEvent from 'react-icons/lib/md/event'
