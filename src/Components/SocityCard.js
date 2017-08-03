@@ -16,7 +16,7 @@ class SocityCard extends Component {
             <img src="images/mtgbanner.jpg" alt="" />
         </CardMedia>
         <CardActions>
-            <FlatButton label="Follow"  primary={true} icon={<RssIcon/>}/>
+            <FlatButton label="Followed"  primary={true} icon={<RssIcon/>}/>
         </CardActions>
     </Card>
         );
