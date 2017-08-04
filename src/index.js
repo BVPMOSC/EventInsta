@@ -14,6 +14,32 @@ var config = {
     messagingSenderId: "627769457667"
   };
 firebase.initializeApp(config);
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('../firebase-messaging-sw.js')
+  .then(function(registration) {
+    console.log('Registration successful, scope is:', registration.scope);
+  }).catch(function(err) {
+    console.log('Service worker registration failed, error:', err);
+  });
+}
+const messaging=firebase.messaging();
+
+messaging.requestPermission()
+.then(function(){
+	console.log("yay permission granted");
+	return messaging.getToken();
+
+
+})
+.then(function(token){
+	
+	console.log(token);
+})
+
+.catch(function(err){
+	console.log("no permission");
+})
+
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
