@@ -16,6 +16,7 @@ import { firebaseAuth } from '../config/constants'
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 import Login from './Login'
 import Register from './Register'
+import * as firebase from 'firebase';
 
 const iconStyles = {
   marginRight: 24,
@@ -53,7 +54,9 @@ export default class AppBarExampleIcon extends React.Component {
     this.state = {
       open: false,
       authed: false,
-      loading: true
+      loading: true,
+      eventName:'Event Name',
+      eventDescription:'Event Description here' 
     };
   }
   componentDidMount() {
@@ -74,8 +77,18 @@ export default class AppBarExampleIcon extends React.Component {
   componentWillUnmount() {
     this.removeListener()
   }
+  componentDidMount(){
+    const rootRef=firebase.database().ref().child('pwa');
+    const speedRef=rootRef.child('random-key');
+    speedRef.on('value',snap=>{
+      this.setState({
+        eventName:snap.val().name,
+        eventDescription:snap.val().description
+      })
+    })
 
 
+  }
   handleToggle = () => this.setState({ open: !this.state.open });
 
   handleClose = () => this.setState({ open: false });
@@ -84,7 +97,7 @@ export default class AppBarExampleIcon extends React.Component {
     return (
       <div>
         <AppBar
-          title="Eveinsta"
+          title="EventInsta"
           style={fixedBar}
           iconClassNameRight="muidocs-icon-navigation-expand-more"
           onLeftIconButtonTouchTap={this.handleToggle}
