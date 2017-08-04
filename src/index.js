@@ -39,10 +39,7 @@ messaging.requestPermission()
 .catch(function(err){
 	console.log("no permission");
 })
-messaging.onMessage(function(payload){
-	//this gets invoked when user is on page and the database is updated
-	console.log('onMessage',payload);
-})
+
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
