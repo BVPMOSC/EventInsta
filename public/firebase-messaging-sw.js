@@ -11,20 +11,6 @@ var config = {
     messagingSenderId: "627769457667"
   };
 firebase.initializeApp(config);
-//const messaging = firebase.messaging();
-messaging.requestPermission()
-.then(function(){
-	console.log("yay permission granted");
-	return messaging.getToken();
-})
-.then(function(token){
-	console.log(token);
-})
-.catch(function(err){
-	console.log("no permission");
-})
+const messaging = firebase.messaging();
 
-messaging.onMessage(function(payload){
-	//this gets invoked when user is on page and the database is updated
-	console.log('onMessage',payload);
-})
+
