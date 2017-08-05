@@ -10,5 +10,5 @@ const config = {
 }
 
 firebase.initializeApp(config)
-export const ref = firebase.database().ref()
+export const ref = firebase.database().ref("/PWA")
 export const firebaseAuth = firebase.auth

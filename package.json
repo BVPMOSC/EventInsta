@@ -12,7 +12,8 @@
     "react-icons": "^2.2.5",
     "react-router-dom": "^4.1.2",
     "react-scripts": "1.0.10",
-    "react-tap-event-plugin": "^2.0.1"
+    "react-tap-event-plugin": "^2.0.1",
+    "reactfire": "^1.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

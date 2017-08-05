@@ -13,6 +13,7 @@ import Avatar from 'material-ui/Avatar';
 import LatestEvents from './LatestEvents'
 import TagsPage from './TagsPage'
 import { firebaseAuth } from '../config/constants'
+import { ref } from '../config/constants'
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 import Login from './Login'
 import * as firebase from 'firebase';
@@ -36,14 +37,13 @@ export default class AppBarExampleIcon extends React.Component {
       loading: true,
       userName: "",
       photoUrl: "",
-      eventName: 'Event Name',
-      eventDescription: 'Event Description here'
+      events: null
     };
   }
   componentWillMount() {
     console.log("Mounting")
     firebaseAuth().onAuthStateChanged((user) => {
-      console.log(user.displayName)
+      console.log(user.photoURL)
       if (user) {
         this.setState({
           userName: user.displayName,
@@ -60,8 +60,37 @@ export default class AppBarExampleIcon extends React.Component {
         })
       }
     });
+
+ var _this = this
+    this.ref = ref.child("/events")
+    // this.ref.on("child_added", function (dataSnapshot) {
+    //   this.items.push(dataSnapshot.val());
+
+    //   this.setState({
+    //     events: this.items
+    //   });
+    //   console.log(this.items);
+
+    // }.bind(this));
+    this.ref.once('value', function (snapshot) {
+      var items = [];
+      snapshot.forEach(function (childSnapshot) {
+        var childKey = childSnapshot.key;
+        var childData = childSnapshot.val();
+        items.push(childData);
+        // ...
+      });
+
+      _this.setState({
+        events:items
+      });
+    });
   }
 
+
+  componentWillUnmount() {
+    this.ref.off();
+  }
 
   handleToggle = () => this.setState({ open: !this.state.open });
 
