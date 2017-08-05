@@ -9,8 +9,10 @@ import {
   white, darkBlack, fullBlack,
 } from 'material-ui/styles/colors';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import Login from './Components/Login'
 import Footer from './Components/Footer'
 import * as firebase from 'firebase';
+import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 injectTapEventPlugin();
 
 const muiTheme = getMuiTheme({
@@ -40,17 +42,17 @@ class App extends Component {
   constructor(props) {
     super(props);
     // we can change this after we decide on the structure of database 
-    this.state = {  };
+    this.state = {};
   }
   // AppBarExample Component which will then fill in the details and render
   // get the number of event from firebase and pass the event ID as prop to 
-  componentDidMount(){
-    
-    const rootRef=firebase.database().ref().child('pwa');
-    const speedRef=rootRef.child('random-key');
-    speedRef.on('value',snap=>{
+  componentDidMount() {
+
+    const rootRef = firebase.database().ref().child('pwa');
+    const speedRef = rootRef.child('random-key');
+    speedRef.on('value', snap => {
       this.setState({
-        
+
       })
     })
 
@@ -59,13 +61,16 @@ class App extends Component {
 
   render() {
     return (
-      <MuiThemeProvider muiTheme={muiTheme}>
-
-        <div >
-          <AppBarExampleIcon />
-          <Footer />
-        </div>
-      </MuiThemeProvider>
+      <Route>
+        <MuiThemeProvider muiTheme={muiTheme}>
+          <div >
+            <AppBarExampleIcon />
+            <Footer />
+          </div>
+        </MuiThemeProvider>
+          <Route exact path="/" component={Login} />
+          <Route path="/Tags" component={TagsPage} />
+      </Route>
     );
   }
 
