@@ -32,7 +32,7 @@ function PrivateRoute({ component: Component, authed, ...rest }) {
       {...rest}
       render={(props) => authed === true
         ? <Component {...props} />
-        : <Redirect to={{ pathname: '/new', state: { from: props.location } }} />}
+        : <Redirect to={{ pathname: '/home', state: { from: props.location } }} />}
     />
   )
 }
@@ -129,11 +129,11 @@ export default class AppBarExampleIcon extends React.Component {
 
 
             </Drawer>
-            <Route exact path="/new" component={Login} />
+            <Route exact path="/" component={Login} />
             <Route path="/Tags" component={TagsPage} />
             <PublicRoute authed={this.state.authed} path='/login' component={Login} />
             <PublicRoute authed={this.state.authed} path='/register' component={Register} />
-            <PrivateRoute authed={this.state.authed} path='/new' component={LatestEvents} />
+            <PrivateRoute authed={this.state.authed} path='/home' component={LatestEvents} />
             <Route render={() => <h3>No Match</h3>} />
           </div>
         </Router>
