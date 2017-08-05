@@ -27,9 +27,11 @@ export default class Login extends Component {
   }
   render() {
     return (
+      <div className="Home">
       <div className="center">
         <p className="login-text">Welcome to Eventinsta</p>
         <div id="firebaseui-auth-container"></div>
+      </div>
       </div>
     );
   }

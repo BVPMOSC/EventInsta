@@ -128,7 +128,7 @@ export default class AppBarExampleIcon extends React.Component {
   
             <Route path="/Tags" component={TagsPage} />
             <Route  path='/home' component={LatestEvents} />
-            <Route render={() => <h3>No Match</h3>} />
+           
           </div>
         </Router>
       </div>
