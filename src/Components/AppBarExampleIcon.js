@@ -82,8 +82,8 @@ export default class AppBarExampleIcon extends React.Component {
     const speedRef=rootRef.child('random-key');
     speedRef.on('value',snap=>{
       this.setState({
-        eventName:snap.val().name,
-        eventDescription:snap.val().description
+        /*eventName:snap.val().name,
+        eventDescription:snap.val().description*/
       })
     })
 

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-
+import { ref, firebaseAuth } from './config/constants'
 import * as firebase from 'firebase';
 var config = {
     apiKey: "AIzaSyCY6ZkAsb-CTT2mEu-J4FeaeF90USDCU7k",
@@ -13,7 +13,7 @@ var config = {
     storageBucket: "learning-5e04c.appspot.com",
     messagingSenderId: "627769457667"
   };
-firebase.initializeApp(config);
+//firebase.initializeApp(config);
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('../firebase-messaging-sw.js')
   .then(function(registration) {
