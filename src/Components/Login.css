@@ -1,0 +1,15 @@
+body {
+    background-image: url('https://github.com/BVPMOSC/event-heads/blob/master/public/back.png?raw=true') !important;
+    background-size: cover !important;
+    overflow: hidden;
+}
+
+.center {
+    margin-top: 20vh;
+}
+
+.center .login-text {
+    text-align: center;
+    color: #eee;
+    font-size: 50px;
+}

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import './Login.css';
 var firebase = require("firebase");
 var firebaseui = require('firebaseui');
+
 export default class Login extends Component {
   constructor(props) {
     super(props);
@@ -25,7 +27,10 @@ export default class Login extends Component {
   }
   render() {
     return (
-          <div id="firebaseui-auth-container"></div>
-        );
+      <div className="center">
+        <p className="login-text">Welcome to Eventinsta</p>
+        <div id="firebaseui-auth-container"></div>
+      </div>
+    );
   }
 }
