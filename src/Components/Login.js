@@ -6,7 +6,7 @@ export default class Login extends Component {
     super(props);
     // FirebaseUI config.
     var uiConfig = {
-      signInSuccessUrl: '/new',
+      signInSuccessUrl: '/home',
       signInOptions: [
         // Leave the lines as is for the providers you want to offer your users.
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,

@@ -15,7 +15,6 @@ import TagsPage from './TagsPage'
 import { firebaseAuth } from '../config/constants'
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 import Login from './Login'
-import Register from './Register'
 import * as firebase from 'firebase';
 
 const iconStyles = {
@@ -122,18 +121,13 @@ export default class AppBarExampleIcon extends React.Component {
             </ListItem>
                 <Divider />
               </MenuItem>
-
-              <MenuItem onTouchTap={this.handleClose}><MdEvent style={iconStyles} /><Link to="/">Latest Events</Link></MenuItem>
-              <MenuItem onTouchTap={this.handleClose}> <MdLabel style={iconStyles} /><Link to="/Tags">Societies Tags</Link></MenuItem>
+              <MenuItem onTouchTap={this.handleClose}><MdEvent style={iconStyles} /><Link to="/home">Latest Events</Link></MenuItem>
+              <MenuItem onTouchTap={this.handleClose}><MdLabel style={iconStyles} /><Link to="/Tags">Societies Tags</Link></MenuItem>
               <MenuItem onTouchTap={this.handleClose}><MdExitToApp style={iconStyles} /><Link to="/Logout">Logout</Link></MenuItem>
-
-
             </Drawer>
-            <Route exact path="/" component={Login} />
+  
             <Route path="/Tags" component={TagsPage} />
-            <PublicRoute authed={this.state.authed} path='/login' component={Login} />
-            <PublicRoute authed={this.state.authed} path='/register' component={Register} />
-            <PrivateRoute authed={this.state.authed} path='/home' component={LatestEvents} />
+            <Route  path='/home' component={LatestEvents} />
             <Route render={() => <h3>No Match</h3>} />
           </div>
         </Router>
