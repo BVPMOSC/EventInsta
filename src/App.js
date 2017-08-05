@@ -13,17 +13,6 @@ class App extends Component {
     // we can change this after we decide on the structure of database 
     this.state = {};
   }
-  // AppBarExample Component which will then fill in the details and render
-  // get the number of event from firebase and pass the event ID as prop to 
-  componentDidMount() { 
-    const rootRef = firebase.database().ref().child('pwa');
-    const speedRef = rootRef.child('random-key');
-    speedRef.on('value', snap => {
-      this.setState({
-      })
-    })
-
-  }
 
 
   render() {

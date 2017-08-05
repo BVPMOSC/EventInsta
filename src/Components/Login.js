@@ -6,7 +6,13 @@ var firebaseui = require('firebaseui');
 export default class Login extends Component {
   constructor(props) {
     super(props);
-    // FirebaseUI config.
+
+
+
+  
+  }
+  componentDidMount() {
+        // FirebaseUI config.
     var uiConfig = {
       signInSuccessUrl: '/home',
       signInOptions: [
@@ -18,8 +24,7 @@ export default class Login extends Component {
       // Terms of service url.
       tosUrl: ''
     };
-
-    // Initialize the FirebaseUI Widget using Firebase.
+  // Initialize the FirebaseUI Widget using Firebase.
     var ui = new firebaseui.auth.AuthUI(firebase.auth());
     // The start method will wait until the DOM is loaded.
     ui.start('#firebaseui-auth-container', uiConfig);
@@ -28,10 +33,10 @@ export default class Login extends Component {
   render() {
     return (
       <div className="Home">
-      <div className="center">
-        <p className="login-text">Welcome to Eventinsta</p>
-        <div id="firebaseui-auth-container"></div>
-      </div>
+        <div className="center">
+          <p className="login-text">Welcome to Eventinsta</p>
+          <div id="firebaseui-auth-container"></div>
+        </div>
       </div>
     );
   }

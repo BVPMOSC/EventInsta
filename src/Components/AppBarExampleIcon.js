@@ -25,113 +25,113 @@ const fixedBar = {
   position: "fixed",
 };
 
-function PrivateRoute({ component: Component, authed, ...rest }) {
-  return (
-    <Route
-      {...rest}
-      render={(props) => authed === true
-        ? <Component {...props} />
-        : <Redirect to={{ pathname: '/home', state: { from: props.location } }} />}
-    />
-  )
-}
 
-function PublicRoute({ component: Component, authed, ...rest }) {
-  return (
-    <Route
-      {...rest}
-      render={(props) => authed === false
-        ? <Component {...props} />
-        : <Redirect to='/' />}
-    />
-  )
-}
 export default class AppBarExampleIcon extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
       open: false,
-      authed: false,
+      authed: true,
       loading: true,
-      eventName:'Event Name',
-      eventDescription:'Event Description here' 
+      userName: "",
+      photoUrl: "",
+      eventName: 'Event Name',
+      eventDescription: 'Event Description here'
     };
   }
-  componentDidMount() {
-    this.removeListener = firebaseAuth().onAuthStateChanged((user) => {
+  componentWillMount() {
+    console.log("Mounting")
+    firebaseAuth().onAuthStateChanged((user) => {
+      console.log(user.displayName)
       if (user) {
         this.setState({
+          userName: user.displayName,
+          photoUrl: user.photoURL,
           authed: true,
           loading: false,
         })
       } else {
         this.setState({
+          userName: "",
+          photoUrl: "",
           authed: false,
           loading: false
         })
       }
-    })
+    });
   }
-  componentWillUnmount() {
-    this.removeListener()
-  }
-  componentDidMount(){
-    const rootRef=firebase.database().ref().child('pwa');
-    const speedRef=rootRef.child('random-key');
-    speedRef.on('value',snap=>{
-      this.setState({
-        /*eventName:snap.val().name,
-        eventDescription:snap.val().description*/
-      })
-    })
 
 
-  }
   handleToggle = () => this.setState({ open: !this.state.open });
 
   handleClose = () => this.setState({ open: false });
 
+  handlesignOut = () => {
+
+    firebase.auth().signOut().then(function () {
+
+      console.log('Signed Out');
+
+    }, function (error) {
+      console.error('Sign Out Error', error);
+    })
+
+    this.setState({ authed: false });
+  }
+
+
   render() {
     return (
-      <div>
-        <AppBar
-          title="EventInsta"
-          style={fixedBar}
-          iconClassNameRight="muidocs-icon-navigation-expand-more"
-          onLeftIconButtonTouchTap={this.handleToggle}
-        />
-        <Router>
-          <div>
-            <Drawer
-              docked={false}
-              width={260}
-              open={this.state.open}
-              onRequestChange={(open) => this.setState({ open })}
-            >
 
-              <AppBar title="" iconElementLeft={<IconButton><NavigationClose /></IconButton>} onLeftIconButtonTouchTap={this.handleClose} />
-              <Divider />
-              <MenuItem onTouchTap={this.handleClose}>
-                <ListItem
-                  disabled={true}
-                  leftAvatar={
-                    <Avatar src="images/avatar.jpg" />
-                  }>Aniket965
-            </ListItem>
+      <Router>
+        <div>
+          {this.state.authed ?
+            (<div>
+              <AppBar
+                title="EventInsta"
+                style={fixedBar}
+                iconClassNameRight="muidocs-icon-navigation-expand-more"
+                onLeftIconButtonTouchTap={this.handleToggle}
+              />
+              <Drawer
+                docked={false}
+                width={260}
+                open={this.state.open}
+                onRequestChange={(open) => this.setState({ open })} >
+
+                <AppBar title="" iconElementLeft={<IconButton><NavigationClose /></IconButton>} onLeftIconButtonTouchTap={this.handleClose} />
                 <Divider />
-              </MenuItem>
-              <MenuItem onTouchTap={this.handleClose}><MdEvent style={iconStyles} /><Link to="/home">Latest Events</Link></MenuItem>
-              <MenuItem onTouchTap={this.handleClose}><MdLabel style={iconStyles} /><Link to="/Tags">Societies Tags</Link></MenuItem>
-              <MenuItem onTouchTap={this.handleClose}><MdExitToApp style={iconStyles} /><Link to="/Logout">Logout</Link></MenuItem>
-            </Drawer>
-  
+                <MenuItem onTouchTap={this.handleClose}>
+                  <ListItem
+                    disabled={true}
+                    leftAvatar={
+                      <Avatar src={this.state.photoUrl} />
+                    }>{this.state.userName}
+                  </ListItem>
+                  <Divider />
+                </MenuItem>
+                <MenuItem onTouchTap={this.handleClose}><MdEvent style={iconStyles} /><Link to="/home">Latest Events</Link></MenuItem>
+                <MenuItem onTouchTap={this.handleClose}><MdLabel style={iconStyles} /><Link to="/Tags">Societies Tags</Link></MenuItem>
+                <MenuItem onTouchTap={this.handlesignOut}><MdExitToApp style={iconStyles} /><Link to="/">Logout</Link></MenuItem>
+              </Drawer>
+
+            </div>
+
+            )
+            : (<Redirect to="/" />)
+          }
+
+          <div>
             <Route path="/Tags" component={TagsPage} />
-            <Route  path='/home' component={LatestEvents} />
-           
+            <Route path='/home' component={LatestEvents} />
+            <Route exact path='/' component={Login} />
           </div>
-        </Router>
-      </div>
+
+        </div>
+
+      </Router>
+
     );
   }
 }
