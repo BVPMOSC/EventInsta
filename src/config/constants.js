@@ -1,12 +1,12 @@
 import firebase from 'firebase'
 
 const config = {
-    apiKey: "AIzaSyCLVOTGQygZMjYc39bjOpPgMQwhVhyW4lo",
-    authDomain: "music-box-1237a.firebaseapp.com",
-    databaseURL: "https://music-box-1237a.firebaseio.com",
-    projectId: "music-box-1237a",
-    storageBucket: "music-box-1237a.appspot.com",
-    messagingSenderId: "24629686597"
+     apiKey: "AIzaSyCY6ZkAsb-CTT2mEu-J4FeaeF90USDCU7k",
+    authDomain: "learning-5e04c.firebaseapp.com",
+    databaseURL: "https://learning-5e04c.firebaseio.com",
+    projectId: "learning-5e04c",
+    storageBucket: "learning-5e04c.appspot.com",
+    messagingSenderId: "627769457667"
 }
 
 firebase.initializeApp(config)
