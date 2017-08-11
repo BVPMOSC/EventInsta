@@ -20,7 +20,6 @@ function EventList(props) {
           <img src={event.image} alt="" />
         </CardMedia>
         <CardActions>
-
           <FlatButton label={event.going + " Going"} primary={true} icon={<MdEventSeat />} />
           <FlatButton label="Invite" secondary={true} icon={<MdPersonAdd />} />
 
@@ -80,7 +79,6 @@ class LatestEvents extends Component {
             </Col>
           </Row>
           <Row>
-             <h1></h1>
             <EventList events={this.state.events} />
           </Row>
 

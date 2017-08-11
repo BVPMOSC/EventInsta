@@ -140,7 +140,7 @@ export default class AppBarExampleIcon extends React.Component {
                   </ListItem>
                   <Divider />
                 </MenuItem>
-                <MenuItem onTouchTap={this.handleClose}><MdEvent style={iconStyles} /><Link to="/home">Latest Events</Link></MenuItem>
+                <MenuItem onTouchTap={this.handleClose}><MdEvent style={iconStyles} /><Link to="/">Latest Events</Link></MenuItem>
                
                 {this.state.userName === "" ?    <MenuItem onTouchTap={this.handlesignOut}><MdExitToApp style={iconStyles} /><Link to="/login">Login</Link></MenuItem>   :(
                   <div>

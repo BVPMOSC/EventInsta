@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Link, Redirect, Switch, Prib } from 're
 
 
 import Login from './Components/Login'
+import TagPage from './Components/TagsPage'
 import Home from './Components/Home'
 import { firebaseAuth } from './config/constants'
 
@@ -61,6 +62,7 @@ class App extends Component {
             }
             <PrivateRoute exact path="/" component={Home} />
             <Route path="/login" component={Login} />
+            <Route path="/Tags" component={Home} />
           </Switch>
         </div>
       </Router>
