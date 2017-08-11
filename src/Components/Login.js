@@ -6,15 +6,12 @@ var firebaseui = require('firebaseui');
 export default class Login extends Component {
   constructor(props) {
     super(props);
-
-
-
   
   }
   componentDidMount() {
         // FirebaseUI config.
     var uiConfig = {
-      signInSuccessUrl: '/home',
+      signInSuccessUrl: '/',
       signInOptions: [
         // Leave the lines as is for the providers you want to offer your users.
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,

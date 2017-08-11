@@ -141,20 +141,26 @@ export default class AppBarExampleIcon extends React.Component {
                   <Divider />
                 </MenuItem>
                 <MenuItem onTouchTap={this.handleClose}><MdEvent style={iconStyles} /><Link to="/home">Latest Events</Link></MenuItem>
-                <MenuItem onTouchTap={this.handleClose}><MdLabel style={iconStyles} /><Link to="/Tags">Societies Tags</Link></MenuItem>
-                <MenuItem onTouchTap={this.handlesignOut}><MdExitToApp style={iconStyles} /><Link to="/">Logout</Link></MenuItem>
+               
+                {this.state.userName === "" ?    <MenuItem onTouchTap={this.handlesignOut}><MdExitToApp style={iconStyles} /><Link to="/login">Login</Link></MenuItem>   :(
+                  <div>
+                  <MenuItem onTouchTap={this.handleClose}><MdLabel style={iconStyles} /><Link to="/Tags">Societies Tags</Link></MenuItem>
+                  <MenuItem onTouchTap={this.handlesignOut}><MdExitToApp style={iconStyles} /><Link to="/">Logout</Link></MenuItem>
+                  </div>
+                  )}
+             
               </Drawer>
 
             </div>
 
             )
-            : (<Redirect to="/" />)
+            : (<Redirect to="/login" />)
           }
 
           <div>
             <Route path="/Tags" component={TagsPage} />
-            <Route path='/home' component={LatestEvents} />
-            <Route exact path='/' component={Login} />
+            <Route path='/login' component={Login} />
+            <Route exact path='/' component={LatestEvents} />
           </div>
 
         </div>
