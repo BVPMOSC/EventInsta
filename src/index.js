@@ -5,6 +5,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { ref, firebaseAuth } from './config/constants'
 import * as firebase from 'firebase';
+import cookie  from 'react-cookies';
 var config = {
     apiKey: "AIzaSyCY6ZkAsb-CTT2mEu-J4FeaeF90USDCU7k",
     authDomain: "learning-5e04c.firebaseapp.com",
@@ -32,8 +33,8 @@ messaging.requestPermission()
 
 })
 .then(function(token){
-	
 	console.log(token);
+	cookie.save('token',token);
 })
 
 .catch(function(err){
