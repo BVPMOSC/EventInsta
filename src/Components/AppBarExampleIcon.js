@@ -40,17 +40,19 @@ export default class AppBarExampleIcon extends React.Component {
       photoUrl: "",
       events: null,
       // only true for development testing
-      isAdmin: true
+      isAdmin: false,
+      useremail:""
     };
   }
   componentWillMount() {
-    console.log("Mounting")
+    // console.log("Mounting")
     firebaseAuth().onAuthStateChanged((user) => {
-      console.log(user.photoURL)
+      // console.log(user.photoURL)
       if (user) {
         this.setState({
           userName: user.displayName,
           photoUrl: user.photoURL,
+          useremail:user.email,
           authed: true,
           loading: false,
         })
@@ -65,6 +67,7 @@ export default class AppBarExampleIcon extends React.Component {
     });
 
     var _this = this
+    var eventref =ref.child('/admins');
     this.ref = ref.child("/events")
     this.ref.once('value', function (snapshot) {
       var items = [];
@@ -79,6 +82,19 @@ export default class AppBarExampleIcon extends React.Component {
         events: items
       });
     });
+    eventref.once('value',(snapshot)=>{
+ var items = [];
+      snapshot.forEach(function (childSnapshot) {
+        var childKey = childSnapshot.key;
+        var childData = childSnapshot.val();
+        // console.log(_this.state.useremail)
+        if(childData.email === _this.state.useremail)
+            _this.setState({
+              isAdmin:true
+            });
+      });
+    })
+    
   }
 
 
@@ -135,7 +151,8 @@ export default class AppBarExampleIcon extends React.Component {
                   <Divider />
                 </MenuItem>
                 <MenuItem onTouchTap={this.handleClose}><MdEvent style={iconStyles} /><Link to="/">Latest Events</Link></MenuItem>
-                <MenuItem onTouchTap={this.handleClose}><MdEvent style={iconStyles} /><Link to="/new">Add Event</Link></MenuItem>
+               {this.state.isAdmin === true ?  <MenuItem onTouchTap={this.handleClose}><MdEvent style={iconStyles} /><Link to="/new">Add Event</Link></MenuItem>: <div></div>}
+               
 
                 {this.state.userName === "" ? <MenuItem onTouchTap={this.handlesignOut}><MdExitToApp style={iconStyles} /><Link to="/login">Login</Link></MenuItem> : (
                   <div>
@@ -155,7 +172,7 @@ export default class AppBarExampleIcon extends React.Component {
           <div>
             <Route path="/Tags" component={TagsPage} />
             <Route path='/login' component={Login} />
-            <Route path='/new' component={AddPage} />
+            <Route path='/new' component={AddPage} adminName={this.state.userName}/>
             <Route exact path='/' component={LatestEvents} />
           </div>
 
