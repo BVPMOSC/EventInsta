@@ -10,30 +10,36 @@ var axios = require('axios')
 function SocietyList(props) {
     const socities = props.socities;
     //var admin = require("firebase-admin");
-    // function handleClick(name) {
-    //     console.log(name);
-    //     console.log('from tag page ' + cookie.load('token'));
-    //     var setConfig = { "Authorization": "key=5vAM:APA91bH_7yI51-aMKMfFEAZDcn1mHREuVRxa-qpW1xRu1urQsOaVOwS-xcyhgG632bpfhuFi9qN3Q1aBVXJJJ4fEKU9E5f6ikqdC1XMhW85vQDnzZnbgy8zTZXsi8nHPtJqcXTOP3sSW" }
-    //     //subscribe user to the topic and change button to unfollow 
-    //     /*axios.post('https://iid.googleapis.com/iid/v1/'+cookie.load('token')+'/rel/topics/'+name, {
-    //         Authorization:'key=AAAAkin5vAM:APA91bH_7yI51-aMKMfFEAZDcn1mHREuVRxa-qpW1xRu1urQsOaVOwS-xcyhgG632bpfhuFi9qN3Q1aBVXJJJ4fEKU9E5f6ikqdC1XMhW85vQDnzZnbgy8zTZXsi8nHPtJqcXTOP3sSW'
-    //     })*/
-    //     axios.post('https://iid.googleapis.com/iid/v1/f3us3SMOVLc:APA91bGO-B_9iOwPEzt83xky5cWEBom_WmFneZQA44SooepH286cQ0Ppxmt-tASMDfLoAe5hJK9Qk3RECBCftpm0006MHZdRIslddJAwufjAhuiUuYul-SqgFwE2XCt86U2wGhYp9fitz/rel/topics/' + name, {
-    //         headers: setConfig
+     function handleClick(name) {
+         console.log(name);
+         console.log('from tag page ' + cookie.load('token'));
+         var API_KEY="5vAM:APA91bH_7yI51-aMKMfFEAZDcn1mHREuVRxa-qpW1xRu1urQsOaVOwS-xcyhgG632bpfhuFi9qN3Q1aBVXJJJ4fEKU9E5f6ikqdC1XMhW85vQDnzZnbgy8zTZXsi8nHPtJqcXTOP3sSW";
+         var setConfig = { 
+            "Authorization": "key="+API_KEY
+        }
+         
 
-    //     })
-    //         .then(function (response) {
-    //             console.log(response);
-    //         })
-    //         .catch(function (error) {
-    //             console.log("this is error");
-    //             console.log(error.response.data);
-    //             console.log(error.response.status);
-    //             console.log(error.response.headers);
-    //         });
+         //subscribe user to the topic and change button to unfollow 
+        axios.get('https://iid.googleapis.com/iid/info/'+cookie.load('token')+'?details=true', {
+                headers: setConfig
+
+         })
+        /*axios.post('https://iid.googleapis.com/iid/v1/'+cookie.load('token')+'/rel/topics/'+name, {
+                headers: setConfig
+
+         })*/
+             .then(function (response) {
+                 console.log(response.status);
+             })
+             .catch(function (error) {
+                 console.log("this is error");
+                 console.log(error.response.data);
+                 console.log(error.response.status);
+                 console.log(error.response.headers);
+             });
 
 
-    // }
+     }
     const listItems = socities.map((socity) =>
         <Col xs={12} sm={8} md={8} lg={8}>
             <Card>
@@ -46,7 +52,7 @@ function SocietyList(props) {
                     <img src={socity.poster_url} alt="" />
                 </CardMedia>
                 <CardActions>
-                    <FlatButton  label={socity.following + " Following"} primary={true} icon={<RssIcon />} />
+                    <FlatButton onClick={() => handleClick(socity.name)} label={socity.following + " Following"} primary={true} icon={<RssIcon />} />
                 </CardActions>
             </Card>
             <h1></h1>
