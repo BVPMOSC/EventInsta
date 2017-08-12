@@ -16,6 +16,7 @@ import { firebaseAuth } from '../config/constants'
 import { ref } from '../config/constants'
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 import Login from './Login'
+import AddPage from './AddPage'
 import * as firebase from 'firebase';
 
 const iconStyles = {
@@ -37,7 +38,9 @@ export default class AppBarExampleIcon extends React.Component {
       loading: true,
       userName: "",
       photoUrl: "",
-      events: null
+      events: null,
+      // only true for development testing
+      isAdmin: true
     };
   }
   componentWillMount() {
@@ -61,17 +64,8 @@ export default class AppBarExampleIcon extends React.Component {
       }
     });
 
- var _this = this
+    var _this = this
     this.ref = ref.child("/events")
-    // this.ref.on("child_added", function (dataSnapshot) {
-    //   this.items.push(dataSnapshot.val());
-
-    //   this.setState({
-    //     events: this.items
-    //   });
-    //   console.log(this.items);
-
-    // }.bind(this));
     this.ref.once('value', function (snapshot) {
       var items = [];
       snapshot.forEach(function (childSnapshot) {
@@ -82,7 +76,7 @@ export default class AppBarExampleIcon extends React.Component {
       });
 
       _this.setState({
-        events:items
+        events: items
       });
     });
   }
@@ -141,14 +135,15 @@ export default class AppBarExampleIcon extends React.Component {
                   <Divider />
                 </MenuItem>
                 <MenuItem onTouchTap={this.handleClose}><MdEvent style={iconStyles} /><Link to="/">Latest Events</Link></MenuItem>
-               
-                {this.state.userName === "" ?    <MenuItem onTouchTap={this.handlesignOut}><MdExitToApp style={iconStyles} /><Link to="/login">Login</Link></MenuItem>   :(
+                <MenuItem onTouchTap={this.handleClose}><MdEvent style={iconStyles} /><Link to="/new">Add Event</Link></MenuItem>
+
+                {this.state.userName === "" ? <MenuItem onTouchTap={this.handlesignOut}><MdExitToApp style={iconStyles} /><Link to="/login">Login</Link></MenuItem> : (
                   <div>
-                  <MenuItem onTouchTap={this.handleClose}><MdLabel style={iconStyles} /><Link to="/Tags">Societies Tags</Link></MenuItem>
-                  <MenuItem onTouchTap={this.handlesignOut}><MdExitToApp style={iconStyles} /><Link to="/">Logout</Link></MenuItem>
-                  </div>
-                  )}
-             
+                    <MenuItem onTouchTap={this.handleClose}><MdLabel style={iconStyles} /><Link to="/Tags">Societies Tags</Link></MenuItem>
+                    <MenuItem onTouchTap={this.handlesignOut}><MdExitToApp style={iconStyles} /><Link to="/">Logout</Link></MenuItem>
+                  </div>      
+                )}
+
               </Drawer>
 
             </div>
@@ -160,6 +155,7 @@ export default class AppBarExampleIcon extends React.Component {
           <div>
             <Route path="/Tags" component={TagsPage} />
             <Route path='/login' component={Login} />
+            <Route path='/new' component={AddPage} />
             <Route exact path='/' component={LatestEvents} />
           </div>
 

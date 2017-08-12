@@ -95,7 +95,7 @@ class TagsPage extends Component {
     render() {
         return (
             <div>
-                <Grid >
+                <Grid fluid>
                     <Row>
                         <Col xs={12} sm={4} md={4} lg={4}>
                             <h1></h1>
