@@ -41,7 +41,7 @@ function SocietyList(props) {
 
      }
     const listItems = socities.map((socity) =>
-        <Col xs={12} sm={8} md={8} lg={8}>
+        <Col xs={12} sm={6} md={3} lg={3}>
             <Card>
                 <CardHeader
                     title={socity.name}
@@ -59,7 +59,7 @@ function SocietyList(props) {
         </Col>
     );
     return (
-        <div>{listItems}</div>
+        <Row>{listItems}</Row>
     );
 }
 class TagsPage extends Component {
@@ -112,9 +112,9 @@ class TagsPage extends Component {
                             <h1></h1>
                         </Col>
                     </Row>
-                    <Row>
+                
                         <SocietyList socities={this.state.socities} />
-                    </Row>
+                 
 
                 </Grid>
             </div>

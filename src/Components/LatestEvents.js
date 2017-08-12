@@ -29,7 +29,7 @@ function EventList(props) {
     </Col>
   );
   return (
-    <div>{listItems}</div>
+    <Row>{listItems}</Row>
   );
 }
 class LatestEvents extends Component {
@@ -78,9 +78,9 @@ class LatestEvents extends Component {
                <h1></h1>
             </Col>
           </Row>
-          <Row>
+      
             <EventList events={this.state.events} />
-          </Row>
+      
 
         </Grid>
 
