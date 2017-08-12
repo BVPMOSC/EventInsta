@@ -20,14 +20,14 @@ function SocietyList(props) {
          
 
          //subscribe user to the topic and change button to unfollow 
-        axios.get('https://iid.googleapis.com/iid/info/'+cookie.load('token')+'?details=true', {
-                headers: setConfig
-
-         })
-        /*axios.post('https://iid.googleapis.com/iid/v1/'+cookie.load('token')+'/rel/topics/'+name, {
+        /*axios.get('https://iid.googleapis.com/iid/info/'+cookie.load('token')+'?details=true', {
                 headers: setConfig
 
          })*/
+        axios.post('https://iid.googleapis.com/iid/v1/'+cookie.load('token')+'/rel/topics/'+name, {
+                headers: setConfig
+
+         })
              .then(function (response) {
                  console.log(response.status);
              })
