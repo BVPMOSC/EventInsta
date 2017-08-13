@@ -9,10 +9,6 @@ exports.sendNotifications = functions.database.ref('/PWA/events/{event_id}').onW
     return;
 
   }*/
-  console.log(event.data);
-	console.log('data changed');// Notification details.
-  console.log(snapshot);
-  console.log(snapshot._newData);
   const text = "trial";
   const payload = {
     notification: {

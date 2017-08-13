@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import { ref } from '../config/constants'
-import { Card, CardActions, CardHeader, CardMedia, CardTitle } from 'material-ui/Card';
+import { Card, CardActions, CardHeader, CardMedia } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import RssIcon from 'react-icons/lib/fa/feed';
-import CloseIcon from 'react-icons/lib/fa/close';
 import cookie from 'react-cookies';
 var axios = require('axios')
 function SocietyList(props) {
@@ -55,7 +54,7 @@ function SocietyList(props) {
                     <FlatButton onClick={() => handleClick(socity.name)} label={socity.following + " Following"} primary={true} icon={<RssIcon />} />
                 </CardActions>
             </Card>
-            <h1></h1>
+            <h1> </h1>
         </Col>
     );
     return (
@@ -79,7 +78,7 @@ class TagsPage extends Component {
         this.ref.once('value', function (snapshot) {
             var items = [];
             snapshot.forEach(function (childSnapshot) {
-                var childKey = childSnapshot.key;
+                
                 var childData = childSnapshot.val();
                 items.push(childData);
                 // ...
@@ -104,12 +103,12 @@ class TagsPage extends Component {
                 <Grid fluid>
                     <Row>
                         <Col xs={12} sm={4} md={4} lg={4}>
-                            <h1></h1>
+                            <h1> </h1>
                         </Col>
                     </Row>
                     <Row>
                         <Col xs={12} sm={4} md={4} lg={4}>
-                            <h1></h1>
+                            <h1> </h1>
                         </Col>
                     </Row>
                 

@@ -9,7 +9,13 @@ const style = {
 };
 function handleSend(state) {
     var eventref = ref.child("/events");
-    eventref.push(state)
+    if (state.event_heading !== "" && state.image !== "" && state.tag !== "")
+        eventref.push(state)
+    document.getElementById("addevent_heading").value = "";
+    document.getElementById("addsub_heading").value = "";
+    document.getElementById("addSName").value = "";
+    document.getElementById("addimage").value = "";
+
 }
 class AddPage extends Component {
     constructor(props) {
@@ -25,7 +31,7 @@ class AddPage extends Component {
             uid: 1
 
         };
-        console.log(props)
+        // console.log(props)
 
     }
 
@@ -34,7 +40,7 @@ class AddPage extends Component {
 
     componentWillMount() {
         firebaseAuth().onAuthStateChanged((user) => {
-            console.log(user.photoURL)
+            // console.log(user.photoURL)
             if (user) {
                 this.setState({
                     admin_name: user.displayName,
@@ -56,13 +62,13 @@ class AddPage extends Component {
                 <Grid fluid>
                     <Row>
                         <Col xs={12} sm={4} md={4} lg={4}>
-                            <h1></h1>
+                            <h1> </h1>
                         </Col>
                     </Row>
 
                     <Row>
                         <Col xs={12} sm={4} md={4} lg={4}>
-                            <h1></h1>
+                            <h1> </h1>
                             <TextField
                                 id="addevent_heading"
                                 onChange={(e, newvalue) => { this.setState({ event_heading: newvalue }) }}

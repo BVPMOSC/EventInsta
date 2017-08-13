@@ -9,7 +9,7 @@ function EventList(props) {
   const events = props.events;
   const listItems = events.map((event) =>
     <Col xs={12} sm={6} md={4} lg={4}>
-      {console.log()}
+     
       <Card>
         <CardHeader
           title={event.admin_name}
@@ -25,7 +25,7 @@ function EventList(props) {
 
         </CardActions>
       </Card>
-      <h1></h1>
+      <h1> </h1>
     </Col>
   );
   return (
@@ -49,7 +49,6 @@ class LatestEvents extends Component {
     this.ref.once('value', function (snapshot) {
       var items = [];
       snapshot.forEach(function (childSnapshot) {
-        var childKey = childSnapshot.key;
         var childData = childSnapshot.val();
         items.push(childData);
         // ...
@@ -74,8 +73,8 @@ class LatestEvents extends Component {
         <Grid fluid>
           <Row>
             <Col xs={12} md={12} lg={12}>
-              <h1></h1>
-               <h1></h1>
+              <h1> </h1>
+               <h1> </h1>
             </Col>
           </Row>
       
