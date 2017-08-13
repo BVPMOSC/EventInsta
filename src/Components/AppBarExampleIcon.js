@@ -9,10 +9,8 @@ import MdEvent from 'react-icons/lib/md/event'
 import New from 'react-icons/lib/md/fiber-new'
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
-import ListItem from 'material-ui/List/ListItem';
-import Avatar from 'material-ui/Avatar';
 import LatestEvents from './LatestEvents'
-import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
+import {  CardHeader} from 'material-ui/Card';
 import TagsPage from './TagsPage'
 import { firebaseAuth } from '../config/constants'
 import { ref } from '../config/constants'
@@ -85,7 +83,6 @@ export default class AppBarExampleIcon extends React.Component {
     this.ref.once('value', function (snapshot) {
       var items = [];
       snapshot.forEach(function (childSnapshot) {
-        var childKey = childSnapshot.key;
         var childData = childSnapshot.val();
         items.push(childData);
         // ...
@@ -96,9 +93,8 @@ export default class AppBarExampleIcon extends React.Component {
       });
     });
     eventref.once('value', (snapshot) => {
-      var items = [];
+    
       snapshot.forEach(function (childSnapshot) {
-        var childKey = childSnapshot.key;
         var childData = childSnapshot.val();
         // console.log(_this.state.useremail)
         if (childData.email === _this.state.useremail)

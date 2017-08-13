@@ -31,7 +31,7 @@ class AddPage extends Component {
             uid: 1
 
         };
-        console.log(props)
+        // console.log(props)
 
     }
 
@@ -40,7 +40,7 @@ class AddPage extends Component {
 
     componentWillMount() {
         firebaseAuth().onAuthStateChanged((user) => {
-            console.log(user.photoURL)
+            // console.log(user.photoURL)
             if (user) {
                 this.setState({
                     admin_name: user.displayName,
@@ -62,13 +62,13 @@ class AddPage extends Component {
                 <Grid fluid>
                     <Row>
                         <Col xs={12} sm={4} md={4} lg={4}>
-                            <h1></h1>
+                            <h1> </h1>
                         </Col>
                     </Row>
 
                     <Row>
                         <Col xs={12} sm={4} md={4} lg={4}>
-                            <h1></h1>
+                            <h1> </h1>
                             <TextField
                                 id="addevent_heading"
                                 onChange={(e, newvalue) => { this.setState({ event_heading: newvalue }) }}

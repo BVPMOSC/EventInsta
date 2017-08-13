@@ -4,10 +4,7 @@ var firebase = require("firebase");
 var firebaseui = require('firebaseui');
 
 export default class Login extends Component {
-  constructor(props) {
-    super(props);
-  
-  }
+
   componentDidMount() {
         // FirebaseUI config.
     var uiConfig = {
