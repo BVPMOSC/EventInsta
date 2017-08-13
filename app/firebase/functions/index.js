@@ -9,7 +9,7 @@ exports.sendNotifications = functions.database.ref('/PWA/events/{event_id}').onW
     return;
   }*/
 	// console.log('data changed');// Notification details.
-  const text = "trial";
+  const text = "lol";
   const payload = {
     notification: {
       title: text,
