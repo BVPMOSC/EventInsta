@@ -24,7 +24,8 @@ if ('serviceWorker' in navigator) {
   });
 }
 const messaging=firebase.messaging();
-
+var database = firebase.database().ref();
+var fcm_token_ref=database.child("/PWA/fcm_tokens");
 messaging.requestPermission()
 .then(function(){
 	console.log("yay permission granted");
@@ -33,8 +34,22 @@ messaging.requestPermission()
 
 })
 .then(function(token){
+	var newRef=fcm_token_ref.push();
+	if (cookie.load('token')!=token) {
+	console.log('new token ');
+	newRef.set({
+		token:token
+	})
+	cookie.save('token',token);	
+	console.log(token);
+	}
+
+	else
+	{
+	console.log('same token  ');
 	console.log(token);
 	cookie.save('token',token);
+	}
 })
 
 .catch(function(err){
