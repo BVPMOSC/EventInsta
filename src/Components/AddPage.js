@@ -9,7 +9,13 @@ const style = {
 };
 function handleSend(state) {
     var eventref = ref.child("/events");
-    eventref.push(state)
+    if (state.event_heading !== "" && state.image !== "" && state.tag !== "")
+        eventref.push(state)
+    document.getElementById("addevent_heading").value = "";
+    document.getElementById("addsub_heading").value = "";
+    document.getElementById("addSName").value = "";
+    document.getElementById("addimage").value = "";
+
 }
 class AddPage extends Component {
     constructor(props) {
