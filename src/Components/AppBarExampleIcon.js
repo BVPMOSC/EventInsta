@@ -9,7 +9,7 @@ import MdEvent from 'react-icons/lib/md/event'
 import New from 'react-icons/lib/md/fiber-new'
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
-import LatestEvents from './LatestEvents'
+import EventPage from './EventPage'
 import {  CardHeader} from 'material-ui/Card';
 import TagsPage from './TagsPage'
 import { firebaseAuth } from '../config/constants'
@@ -189,7 +189,7 @@ export default class AppBarExampleIcon extends React.Component {
             <Route path="/Tags" component={TagsPage} />
             <Route path='/login' component={Login} />
             <Route path='/new' component={AddPage} adminName={this.state.userName} />
-            <Route exact path='/' component={LatestEvents} />
+            <Route exact path='/' component={EventPage} />
           </div>
 
         </div>

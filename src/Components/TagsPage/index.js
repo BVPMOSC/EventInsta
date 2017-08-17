@@ -14,7 +14,6 @@ class TagsPage extends Component {
     }
 
     componentWillMount() {
-
         var _this = this
         this.ref = ref.child("/orgs")
 
