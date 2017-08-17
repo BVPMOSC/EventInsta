@@ -15,7 +15,7 @@ import TagsPage from './TagsPage'
 import { firebaseAuth } from '../config/constants'
 import { ref } from '../config/constants'
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
-import Login from './Login'
+import Login from './LoginPage'
 import AddPage from './AddPage'
 import * as firebase from 'firebase';
 

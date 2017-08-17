@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route,  Redirect, Switch } from 'react-router-dom';
-import Login from './Components/Login'
+import Login from './Components/LoginPage'
 import Home from './Components/Home'
 import { firebaseAuth } from './config/constants'
 
