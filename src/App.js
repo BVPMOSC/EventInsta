@@ -41,7 +41,6 @@ class App extends Component {
       <Router>
         <div>
           <Switch>
-           
             <PrivateRoute exact path="/" component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/Tags" component={Home}  />

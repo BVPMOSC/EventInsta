@@ -2,11 +2,15 @@ import React, { Component } from 'react'
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-import { firebaseAuth } from '../config/constants'
-import { ref } from '../config/constants'
+import { firebaseAuth } from '../../config/constants'
+import { ref } from '../../config/constants'
+
+
 const style = {
     margin: 12,
 };
+
+
 function handleSend(state) {
     var eventref = ref.child("/events");
     if (state.event_heading !== "" && state.image !== "" && state.tag !== "")
@@ -15,8 +19,9 @@ function handleSend(state) {
     document.getElementById("addsub_heading").value = "";
     document.getElementById("addSName").value = "";
     document.getElementById("addimage").value = "";
-
 }
+
+
 class AddPage extends Component {
     constructor(props) {
         super(props);
@@ -31,21 +36,20 @@ class AddPage extends Component {
             uid: 1
 
         };
-        // console.log(props)
+      
 
     }
 
 
 
 
-    componentWillMount() {
+    componentDidMount() {
         firebaseAuth().onAuthStateChanged((user) => {
-            // console.log(user.photoURL)
+
             if (user) {
                 this.setState({
                     admin_name: user.displayName,
                     admin_avatar_url: user.photoURL,
-
                 })
 
             } else {
