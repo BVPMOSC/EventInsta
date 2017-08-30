@@ -1,0 +1,27 @@
+{
+	"plugins": [
+		"lodash",
+		[
+			"transform-runtime",
+			{
+				"helpers": false,
+				"polyfill": false,
+				"regenerator": true,
+				"moduleName": "babel-runtime"
+			}
+		],
+		"transform-decorators-legacy",
+		"syntax-dynamic-import"
+	],
+	"presets": ["es2015", "react", "stage-0"],
+	"env": {
+		"production": {
+			"presets": ["react-optimize"]
+		},
+		"development": {
+			"plugins": [
+				"react-hot-loader/babel"
+			]
+		}
+	}
+}
