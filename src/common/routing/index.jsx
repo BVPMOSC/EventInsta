@@ -1,6 +1,6 @@
 import {Route} from 'react-router-dom'
-import {Users, Dashboard, Login} from 'containers'
-import RouteAuth from 'components/addons/RouteAuth'
+import {Users, Dashboard, Login} from '../containers'
+import RouteAuth from '../components/addons/RouteAuth'
 import {createBrowserHistory, createMemoryHistory} from 'history'
 
 export const history = getHistory()
@@ -46,7 +46,7 @@ export const routes = [
 	},
 	{
 		path: '/auth',
-		name: 'Auth',
+		name: 'Signin',
 		tag: Route,
 		component: Login
 	},
