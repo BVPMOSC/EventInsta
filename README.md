@@ -1,4 +1,5 @@
 # EventInsta ![https://travis-ci.org/BVPMOSC/EventInsta](https://travis-ci.org/BVPMOSC/EventInsta.svg?branch=master)
+[![Dependency Status](https://gemnasium.com/badges/github.com/BVPMOSC/EventInsta.svg)](https://gemnasium.com/github.com/BVPMOSC/EventInsta)
 
 EventInsta a tool written in ReactJS consuming firebase services like Hosting, Realtime Database, Authentication, Cloud functions and Cloud Messaging. Interesting Right?
 
