@@ -41,6 +41,7 @@ const muiTheme = getMuiTheme({
 
 
 class App extends Component {
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -54,10 +55,13 @@ class App extends Component {
       useremail: ""
     };
 
+
+
     // we can change this after we decide on the structure of database 
     firebaseAuth().onAuthStateChanged((user) => {
       // console.log(user.photoURL)
       if (user) {
+
         this.setState({
           userName: user.displayName,
           photoUrl: user.photoURL,
@@ -65,6 +69,8 @@ class App extends Component {
           authed: true,
           loading: false,
         });
+        
+  
       }
       else {
         this.setState({
@@ -78,21 +84,25 @@ class App extends Component {
     });
 
 
+
+  }
+
+  componentWillMount() {
     var _this = this
-    var eventref = ref.child('/admins');
-    eventref.once('value', (snapshot) => {
-    
-      snapshot.forEach(function (childSnapshot) {
-        var childData = childSnapshot.val();
-        // console.log(_this.state.useremail)
-        if (childData.email === _this.state.useremail)
-          _this.setState({
-            isAdmin: true
+        var eventref = ref.child('/admins');
+        eventref.once('value', (snapshot) => {
+          snapshot.forEach(function (childSnapshot) {
+            var childData = childSnapshot.val();
+            if (childData.email === _this.state.useremail) {
+                console.log("done");
+
+              _this.setState({
+                isAdmin: true
+              });
+
+            }
           });
-      });
-    })
-
-
+        })
   }
   componentWillUnmount() {
     this.ref.off();
@@ -120,22 +130,22 @@ class App extends Component {
 
       <Router>
         <MuiThemeProvider muiTheme={muiTheme}>
-          {this.state.authed? (
-          <div>
-            <AppBarDrawer
-              authed={this.authed}
-              userName={this.userName}
-              photoUrl={this.state.photoUrl}
-              isAdmin={this.state.isAdmin}
-              useremail={this.state.authed}
-            />
-            <Switch>
-              <Route exact path="/" component={EventPage} />
-              <AdminRoute path="/new" component={AddPage}/>
-              <Route path="/socities" component={TagsPage} />
-            </Switch>
-            <Footer />
-          </div>):(<LoginPage/>)}
+          {this.state.authed  ? (
+            <div>
+              <AppBarDrawer
+                authed={this.authed}
+                userName={this.state.userName}
+                photoUrl={this.state.photoUrl}
+                isAdmin={this.state.isAdmin}
+                useremail={this.state.useremail}
+              />
+              <Switch>
+                <Route exact path="/" component={EventPage} />
+                <AdminRoute path="/new" component={AddPage} />
+                <Route path="/socities" component={TagsPage} />
+              </Switch>
+              <Footer />
+            </div>) : (<LoginPage />)}
         </MuiThemeProvider>
       </Router>
 
