@@ -50,9 +50,7 @@ export default class AppBarExampleIcon extends React.Component {
       // only true for development testing
       isAdmin: false,
       useremail: ""
-
     };
-
 
   }
   componentWillMount() {

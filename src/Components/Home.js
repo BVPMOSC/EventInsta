@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBarExampleIcon from './AppBarExampleIcon'
+import AppBarDrawer from './AppBarDrawer'
+import EventPage from './EventPage'
 import {
     cyan500, cyan700,
     blue500,
@@ -11,8 +13,6 @@ import {
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Footer from './Footer'
 injectTapEventPlugin();
-
-
 
 const muiTheme = getMuiTheme({
     palette: {
@@ -41,7 +41,14 @@ class Home extends Component {
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
                 <div>
-                    <AppBarExampleIcon />
+                    <AppBarDrawer
+                        authed={true}
+                        userName={"Aniket965"}
+                        photoUrl={`https://avatars1.githubusercontent.com/u/22680912?v=4&s=460`}
+                        isAdmin={true}
+                        useremail={`aniket965.as@gmail.com`}
+                    />
+                    <EventPage />
                     <Footer />
                 </div>
             </MuiThemeProvider>
