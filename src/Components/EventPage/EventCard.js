@@ -19,7 +19,6 @@ const EventCard = ({ event }) => {
             <CardActions>
                 <FlatButton label={going + " Going"} primary={true} icon={<MdEventSeat />} />
                 <FlatButton label="Invite" secondary={true} icon={<MdPersonAdd />} />
-
             </CardActions>
         </Card>
 

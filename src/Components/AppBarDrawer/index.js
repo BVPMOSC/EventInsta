@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import Divider from 'material-ui/Divider';
-import {  CardHeader} from 'material-ui/Card';
+import { CardHeader } from 'material-ui/Card';
 import MenuItem from 'material-ui/MenuItem';
 import MdLabel from 'react-icons/lib/md/label'
 import MdExitToApp from 'react-icons/lib/md/exit-to-app'
@@ -10,6 +10,7 @@ import MdEvent from 'react-icons/lib/md/event'
 import New from 'react-icons/lib/md/fiber-new'
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
+import { Link } from 'react-router-dom'
 import * as firebase from 'firebase';
 
 const iconStyles = {
@@ -59,7 +60,7 @@ class AppBarDrawer extends Component {
     this.setState({ authed: false });
   }
 
-  
+
 
   render() {
     return (
@@ -90,16 +91,28 @@ class AppBarDrawer extends Component {
 
             <Divider />
           </MenuItem>
-          <MenuItem onTouchTap={this.handleClose}><MdEvent style={iconStyles} />Latest Events</MenuItem>
-          {this.state.isAdmin === true ? <MenuItem onTouchTap={this.handleClose}><New style={iconStyles} />Add Event</MenuItem> : <div></div>}
+          <MenuItem onTouchTap={this.handleClose}><MdEvent style={iconStyles} />
+            <Link to="new" style={darkText}>Latest Events</Link>
+          </MenuItem>
+          {this.state.isAdmin === true ? <MenuItem onTouchTap={this.handleClose}><New style={iconStyles} />
+            <Link to="newevent" style={darkText}>Add Event</Link>
+          </MenuItem> : <div></div>}
 
-
-          {this.state.userName === "" ? <MenuItem onTouchTap={this.handlesignOut}><MdExitToApp style={iconStyles} />Login</MenuItem> : (
-            <div>
-              <MenuItem onTouchTap={this.handleClose}><MdLabel style={iconStyles} />Societies Tags</MenuItem>
-              <MenuItem onTouchTap={this.handlesignOut}><MdExitToApp style={iconStyles} />Logout</MenuItem>
-            </div>
-          )}
+          {this.state.userName === "" ? <MenuItem onTouchTap={this.handlesignOut}>
+            <MdExitToApp style={iconStyles} />
+            <Link to="login" style={darkText}>Login</Link>
+          </MenuItem> : (
+              <div>
+                <MenuItem onTouchTap={this.handleClose}><MdLabel style={iconStyles} />
+                  <Link to="societies" style={darkText}>
+                    Societies Tags
+              </Link>
+                </MenuItem>
+                <MenuItem onTouchTap={this.handlesignOut}><MdExitToApp style={iconStyles} />
+                  <Link to="logout" style={darkText}>Logout</Link>
+                </MenuItem>
+              </div>
+            )}
 
         </Drawer>
       </div>
