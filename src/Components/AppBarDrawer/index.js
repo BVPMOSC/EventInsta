@@ -86,25 +86,24 @@ class AppBarDrawer extends Component {
               title={this.state.userName}
               subtitle={this.state.useremail}
               avatar={this.state.photoUrl}
-
             />
 
             <Divider />
           </MenuItem>
           <MenuItem onTouchTap={this.handleClose}><MdEvent style={iconStyles} />
-            <Link to="new" style={darkText}>Latest Events</Link>
+            <Link to="/" style={darkText}>Latest Events</Link>
           </MenuItem>
           {this.state.isAdmin === true ? <MenuItem onTouchTap={this.handleClose}><New style={iconStyles} />
-            <Link to="newevent" style={darkText}>Add Event</Link>
+            <Link to="/new" style={darkText}>Add Event</Link>
           </MenuItem> : <div></div>}
 
           {this.state.userName === "" ? <MenuItem onTouchTap={this.handlesignOut}>
             <MdExitToApp style={iconStyles} />
-            <Link to="login" style={darkText}>Login</Link>
+            <Link to="/login" style={darkText}>Login</Link>
           </MenuItem> : (
               <div>
                 <MenuItem onTouchTap={this.handleClose}><MdLabel style={iconStyles} />
-                  <Link to="societies" style={darkText}>
+                  <Link to="/socities" style={darkText}>
                     Societies Tags
               </Link>
                 </MenuItem>
