@@ -1,5 +1,9 @@
 import { ref, firebaseAuth } from '../config/constants'
+var firebase = require('firebase');
 
+export function googleSignIn() {
+return  firebaseAuth().signInWithPopup(new firebase.auth.GoogleAuthProvider());
+}
 export function auth (email, pw) {
   return firebaseAuth().createUserWithEmailAndPassword(email, pw)
     .then(saveUser)

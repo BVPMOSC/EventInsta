@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import { Button, Divider, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
-
-var firebase = require('firebase')
-
+import { auth, login, resetPassword,googleSignIn } from './../../helpers/auth'
+var firebase = require('firebase');
+var email, password;
 const docsButtonStyle = {
-	position: 'fixed',
-	margin: '2em',
-	bottom: 0,
-	left: 0,
-	animation: 'back-to-docs 1.5s ease-in-out infinite',
-	zIndex: 6
+  position: 'fixed',
+  margin: '2em',
+  bottom: 0,
+  left: 0,
+  animation: 'back-to-docs 1.5s ease-in-out infinite',
+  zIndex: 6
 }
 
 const style = (
@@ -18,20 +18,34 @@ const style = (
         0% { transform: translateY(0); }
         50% { transform: translateY(0.35em); }
         100% { transform: translateY(0); }
-    }
+    } 
   `}</style>
 )
+function handleLogin() {
+  login(email, password)
+    .then(() => {
+      email = "";
+      password = "";
+    })
+    .catch((error) => {
+      // this.setState(setErrorMsg('Invalid username/password.'))
+    })
+}
 
 export default class Login extends Component {
-	// noinspection SpellCheckingInspection
-	componentDidMount () {
-    //  Firebase config
-		var provider = new firebase.auth.GoogleAuthProvider()
-		firebase.auth().languageCode = 'en'
-	}
+  // noinspection SpellCheckingInspection
+  constructor(props) {
+    super(props)
+  }
 
-	render () {
-		return (
+  componentDidMount() {
+    //  Firebase config
+    var provider = new firebase.auth.GoogleAuthProvider()
+    firebase.auth().languageCode = 'en'
+  }
+
+  render() {
+    return (
       <div>
         {style}
         <div className='login-form'>
@@ -53,7 +67,9 @@ export default class Login extends Component {
             verticalAlign='middle'
           >
             <Grid.Column style={{ maxWidth: 350 }}>
-              <Form size='large'>
+              <Form size='large'
+                onSubmit={handleLogin}
+              >
                 <Segment stacked>
                   <Header as='h2' color='teal' textAlign='center'>
                     {' '}EventInsta
@@ -63,6 +79,7 @@ export default class Login extends Component {
                     fluid
                     icon='user'
                     iconPosition='left'
+                    onChange={(e, { value }) => { email = value }}
                     placeholder='E-mail address'
                   />
                   <Form.Input
@@ -70,13 +87,15 @@ export default class Login extends Component {
                     icon='lock'
                     iconPosition='left'
                     placeholder='Password'
+                    onChange={(e, { value }) => { password = value }}
                     type='password'
                   />
                   <Button color='teal' icon='mail outline' fluid size='medium' content='Signin with Email' />
-                  <br/>
-                  <Button color='google plus' icon='google plus' fluid size='medium' content='Sign in with Google'/>
+                  <br />
+               
                 </Segment>
               </Form>
+              <Button color='google plus' icon='google plus' fluid size='medium' content='Sign in with Google'  onClick={googleSignIn}/>
               <Message>
                 <Button
                   color='grey'
@@ -97,6 +116,6 @@ export default class Login extends Component {
         <div style={docsButtonStyle}>
         </div>
       </div>
-		)
-	}
+    )
+  }
 }
