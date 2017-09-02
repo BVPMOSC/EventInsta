@@ -71,47 +71,47 @@ class AppBarDrawer extends Component {
 					iconClassNameRight="muidocs-icon-navigation-expand-more"
 					onLeftIconButtonTouchTap={this.handleToggle}
 				/>
-				<Drawer
-					docked={false}
-					width={300}
-					open={this.state.open}
-					onRequestChange={(open) => this.setState({ open })} >
+					<Drawer
+						docked={false}
+						width={300}
+						open={this.state.open}
+						onRequestChange={(open) => this.setState({ open })} >
 
-					<AppBar title="" iconElementLeft={<IconButton><NavigationClose /></IconButton>} onLeftIconButtonTouchTap={this.handleClose} />
-					<Divider />
-
-					<MenuItem onTouchTap={this.handleClose}>
-
-						<CardHeader
-							title={this.state.userName}
-							subtitle={this.state.useremail}
-							avatar={this.state.photoUrl}
-						/>
-
+						<AppBar title="" iconElementLeft={<IconButton><NavigationClose /></IconButton>} onLeftIconButtonTouchTap={this.handleClose} />
 						<Divider />
-					</MenuItem>
-					<MenuItem onTouchTap={this.handleClose}><MdEvent style={iconStyles} />
-						<Link to="/" style={darkText}>Latest Events</Link>
-					</MenuItem>
-					{this.state.isAdmin === true ? <MenuItem onTouchTap={this.handleClose}><New style={iconStyles} />
-						<Link to="/new" style={darkText}>Add Event</Link>
-					</MenuItem> : <div></div>}
 
-					{this.state.userName === "" ? <MenuItem onTouchTap={this.handlesignOut}>
-						<MdExitToApp style={iconStyles} />
-						<Link to="/login" style={darkText}>Login</Link>
-					</MenuItem> : (
-							<div>
-								<MenuItem onTouchTap={this.handleClose}><MdLabel style={iconStyles} />
-									<Link to="/socities" style={darkText}>Societies Tags</Link>
-								</MenuItem>
-								<MenuItem onTouchTap={this.handlesignOut}><MdExitToApp style={iconStyles} />
-									<Link to="logout" style={darkText}>Logout</Link>
-								</MenuItem>
-							</div>
-						)}
+						<MenuItem onTouchTap={this.handleClose}>
 
-				</Drawer>
+							<CardHeader
+								title={this.state.userName}
+								subtitle={this.state.useremail}
+								avatar={this.state.photoUrl}
+							/>
+
+							<Divider />
+						</MenuItem>
+						<MenuItem onTouchTap={this.handleClose}><MdEvent style={iconStyles} />
+							<Link to="/" style={darkText}>Latest Events</Link>
+						</MenuItem>
+						{this.state.isAdmin === true ? <MenuItem onTouchTap={this.handleClose}><New style={iconStyles} />
+							<Link to="/new" style={darkText}>Add Event</Link>
+						</MenuItem> : <div></div>}
+
+						{this.state.userName === "" ? <MenuItem onTouchTap={this.handlesignOut}>
+							<MdExitToApp style={iconStyles} />
+							<Link to="/login" style={darkText}>Login</Link>
+						</MenuItem> : (
+								<div>
+									<MenuItem onTouchTap={this.handleClose}><MdLabel style={iconStyles} />
+										<Link to="/socities" style={darkText}>Societies Tags</Link>
+									</MenuItem>
+									<MenuItem onTouchTap={this.handlesignOut}><MdExitToApp style={iconStyles} />
+										<Link to="logout" style={darkText}>Logout</Link>
+									</MenuItem>
+								</div>
+							)}
+
+					</Drawer>
 			</div>
 
 		)

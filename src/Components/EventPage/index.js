@@ -40,6 +40,8 @@ class LatestEvents extends Component {
             <Col xs={12} md={12} lg={12}>
               <h1> </h1>
               <h1> </h1>
+              <br/>
+              
             </Col>
           </Row>
           <EventList events={this.state.events} />

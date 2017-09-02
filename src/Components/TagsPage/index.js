@@ -44,11 +44,14 @@ class TagsPage extends Component {
                     <Row>
                         <Col xs={12} sm={4} md={4} lg={4}>
                             <h1> </h1>
+                            <br/>
                         </Col>
                     </Row>
                     <Row>
                         <Col xs={12} sm={4} md={4} lg={4}>
                             <h1> </h1>
+                            <br/>
+                            <br/>
                         </Col>
                     </Row>
                         <SocietyList socities={this.state.socities} />
