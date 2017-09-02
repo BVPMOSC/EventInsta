@@ -4,21 +4,23 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import { firebaseAuth } from '../../config/constants'
 import { ref } from '../../config/constants'
-
+import { Input } from 'semantic-ui-react'
+import { Button, Icon } from 'semantic-ui-react'
 
 const style = {
     margin: 12,
 };
 
-
 function handleSend(state) {
     var eventref = ref.child("/events");
     if (state.event_heading !== "" && state.image !== "" && state.tag !== "")
-        eventref.push(state)
-    document.getElementById("addevent_heading").value = "";
-    document.getElementById("addsub_heading").value = "";
-    document.getElementById("addSName").value = "";
-    document.getElementById("addimage").value = "";
+        eventref.push(state).then(() => {
+            document.getElementById("addevent_heading").value = "";
+            document.getElementById("addsub_heading").value = "";
+            document.getElementById("addSName").value = "";
+            document.getElementById("addimage").value = "";
+        })
+
 }
 
 
@@ -32,11 +34,12 @@ class AddPage extends Component {
             sub_heading: "",
             tag: "",
             image: "",
+            site: "",
             going: 0,
             uid: 1
 
         };
-      
+
 
     }
 
@@ -66,42 +69,55 @@ class AddPage extends Component {
                 <Grid fluid>
                     <Row>
                         <Col xs={12} sm={4} md={4} lg={4}>
-                            <h1> </h1>
+                            <h1> </h1><br />
                         </Col>
                     </Row>
 
                     <Row>
                         <Col xs={12} sm={4} md={4} lg={4}>
-                            <h1> </h1>
-                            <TextField
-                                id="addevent_heading"
-                                onChange={(e, newvalue) => { this.setState({ event_heading: newvalue }) }}
-                                hintText="Event name"
-                            />
+                            <h1> </h1><br />
+
+                            <Input id="addevent_heading" defaultValue={this.state.event_heading} onChange={(e, newvalue) => { this.setState({ event_heading: newvalue.value }) }} icon='id card' iconPosition='left' placeholder='Enter Heading...' />
                             <br />
                             <br />
-                            <TextField
-                                id="addsub_heading"
-                                onChange={(e, newvalue) => { this.setState({ sub_heading: newvalue }) }}
-                                hintText="Sub heading"
-                            />
+
+                            <Input id="addsub_heading" defaultValue={this.state.event_heading} onChange={(e, newvalue) => { this.setState({ sub_heading: newvalue.value }) }} icon='id card outline' iconPosition='left' placeholder='Enter Sub Heading...' />
                             <br />
                             <br />
-                            <TextField
+                            <Input id="addimage" onChange={(e, newvalue) => { this.setState({ image: 'http://' + newvalue.value }) }} label='http://' placeholder='i.com/Image.jpg' />
+                            <br />
+                            <br />
+                            <Input
                                 id="addSName"
-                                onChange={(e, newvalue) => { this.setState({ tag: newvalue }) }}
-                                hintText="Society name"
+                                icon='hashtag'
+                                iconPosition='left'
+                                label={{ tag: true, content: 'Society' }}
+                                labelPosition='right'
+                                placeholder='Enter name'
+                                onChange={(e, newvalue) => { this.setState({ tag: newvalue.value }) }}
                             />
+
+
+
+
                             <br />
                             <br />
-                            <TextField
-                                id="addimage"
-                                onChange={(e, newvalue) => { this.setState({ image: newvalue }) }}
-                                hintText="Event poster url"
-                            />
+                            <Button animated
+                            color='red'
+                            onClick={()=>{var st = this.state; handleSend(st)} }
+                            >
+                                <Button.Content visible>Add Event</Button.Content>
+                                <Button.Content hidden>
+                                    <Icon name='right arrow' />
+                                </Button.Content>
+                            </Button>
                             <br />
+                            <br /><br />
+                            <br /><br />
+                            <br /><br />
+
                             <br />
-                            <RaisedButton label="Add Event" primary={true} style={style} onTouchTap={(e) => { var st = this.state; handleSend(st) }} />
+
                         </Col>
                     </Row>
 
