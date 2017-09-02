@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import { Button, Divider, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
-import { auth, login, resetPassword,googleSignIn } from './../../helpers/auth'
-var firebase = require('firebase');
-var email, password;
+import { auth, login, resetPassword, googleSignIn } from './../../helpers/auth'
+import './Login.css'
+import { NavLink } from 'react-router-dom'
+
+var firebase = require('firebase')
+var email, password
 const docsButtonStyle = {
   position: 'fixed',
   margin: '2em',
@@ -18,33 +21,36 @@ const style = (
         0% { transform: translateY(0); }
         50% { transform: translateY(0.35em); }
         100% { transform: translateY(0); }
-    } 
+    }
+
   `}</style>
 )
-function handleLogin() {
+function handleLogin () {
   login(email, password)
     .then(() => {
-      email = "";
-      password = "";
+      email = ''
+      password = ''
     })
     .catch((error) => {
+      // eslint-disable-next-line
+      error.message === 'EMAIL_NOT_FOUND' ? auth(email, password) : ''
       // this.setState(setErrorMsg('Invalid username/password.'))
     })
 }
 
 export default class Login extends Component {
   // noinspection SpellCheckingInspection
-  constructor(props) {
+  constructor (props) {
     super(props)
   }
 
-  componentDidMount() {
+  componentDidMount () {
     //  Firebase config
     var provider = new firebase.auth.GoogleAuthProvider()
     firebase.auth().languageCode = 'en'
   }
 
-  render() {
+  render () {
     return (
       <div>
         {style}
@@ -66,22 +72,22 @@ export default class Login extends Component {
             style={{ height: '100%' }}
             verticalAlign='middle'
           >
-            <Grid.Column style={{ maxWidth: 350 }}>
-              <Form size='large'
-                onSubmit={handleLogin}
-              >
-                <Segment stacked>
-                  <Header as='h2' color='teal' textAlign='center'>
-                    {' '}EventInsta
-                  </Header>
-                  <Divider />
+            <Grid.Column style={{ maxWidth: 450 }}>
+              <Form size='large' onSubmit={handleLogin}>
+                <Segment>
+                <Header size={'huge header'} color='teal' textAlign='center' content={'EventInsta'} />
+                <Divider />
+                <Form.Group widths='equal'>
                   <Form.Input
                     fluid
                     icon='user'
                     iconPosition='left'
                     onChange={(e, { value }) => { email = value }}
                     placeholder='E-mail address'
+                    required
                   />
+                </Form.Group>
+                <Form.Group widths='equal'>
                   <Form.Input
                     fluid
                     icon='lock'
@@ -89,31 +95,28 @@ export default class Login extends Component {
                     placeholder='Password'
                     onChange={(e, { value }) => { password = value }}
                     type='password'
+                    required
                   />
-                  <Button color='teal' icon='mail outline' fluid size='medium' content='Signin with Email' />
-                  <br />
-               
+                </Form.Group>
+                  <Button.Group size='large' fluid>
+                    <Button icon='google plus' color={'google plus'} onClick={googleSignIn} content={'Google Sign in'} />
+                    <Button.Or />
+                    <Form.Button icon='mail outline' color='teal' content={'Continue'} />
+                  </Button.Group>
                 </Segment>
               </Form>
-              <Button color='google plus' icon='google plus' fluid size='medium' content='Sign in with Google'  onClick={googleSignIn}/>
-              <Message>
-                <Button
-                  color='grey'
-                  content='Like'
-                  icon='heart'
-                />
-
-                <Button
-                  basic
-                  color='blue'
-                  content='Fork'
-                  icon='fork'
-                />
-              </Message>
             </Grid.Column>
           </Grid>
         </div>
         <div style={docsButtonStyle}>
+          <Button
+            as={NavLink}
+            to={`https://github.com/bvpmosc/eventinsta`}
+            color='secondary'
+            icon='github'
+            content='Source'
+            target='_blank'
+          />
         </div>
       </div>
     )
