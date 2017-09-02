@@ -14,110 +14,108 @@ import { Link } from 'react-router-dom'
 import * as firebase from 'firebase';
 
 const iconStyles = {
-  marginRight: 16,
-  marginLeft: 24,
-  fontSize: 24,
-  color: 'rgba(0,0,0,0.54)',
+	marginRight: 16,
+	marginLeft: 24,
+	fontSize: 24,
+	color: 'rgba(0,0,0,0.54)',
 };
 const darkText = {
-  color: "rgba(0,0,0,0.87)",
-  fontWeight: 500
+	color: "rgba(0,0,0,0.87)",
+	fontWeight: 500
 }
 const fixedBar = {
-  position: "fixed",
+	position: "fixed",
 };
 
 
 
 class AppBarDrawer extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      open: false,
-      authed: props.authed,
-      userName: props.userName,
-      photoUrl: props.photoUrl,
-      isAdmin: props.isAdmin,
-      useremail: props.useremail
-    };
-  }
+	constructor(props) {
+		super(props);
+		this.state = {
+			open: false,
+			authed: props.authed,
+			userName: props.userName,
+			photoUrl: props.photoUrl,
+			isAdmin: props.isAdmin,
+			useremail: props.useremail
+		};
+	}
 
-  handleToggle = () => this.setState({ open: !this.state.open });
+	handleToggle = () => this.setState({ open: !this.state.open });
 
-  handleClose = () => this.setState({ open: false });
+	handleClose = () => this.setState({ open: false });
 
-  handlesignOut = () => {
+	handlesignOut = () => {
 
-    firebase.auth().signOut().then(function () {
+		firebase.auth().signOut().then(function () {
 
-      console.log('Signed Out');
+			console.log('Signed Out');
 
-    }, function (error) {
-      console.error('Sign Out Error', error);
-    })
+		}, function (error) {
+			console.error('Sign Out Error', error);
+		})
 
-    this.setState({ authed: false });
-  }
+		this.setState({ authed: false });
+	}
 
 
 
-  render() {
-    return (
-      <div>
-        <AppBar
-          title="EventInsta"
-          style={fixedBar}
-          iconClassNameRight="muidocs-icon-navigation-expand-more"
-          onLeftIconButtonTouchTap={this.handleToggle}
-        />
-        <Drawer
-          docked={false}
-          width={300}
-          open={this.state.open}
-          onRequestChange={(open) => this.setState({ open })} >
+	render() {
+		return (
+			<div>
+				<AppBar
+					title="EventInsta"
+					style={fixedBar}
+					iconClassNameRight="muidocs-icon-navigation-expand-more"
+					onLeftIconButtonTouchTap={this.handleToggle}
+				/>
+				<Drawer
+					docked={false}
+					width={300}
+					open={this.state.open}
+					onRequestChange={(open) => this.setState({ open })} >
 
-          <AppBar title="" iconElementLeft={<IconButton><NavigationClose /></IconButton>} onLeftIconButtonTouchTap={this.handleClose} />
-          <Divider />
+					<AppBar title="" iconElementLeft={<IconButton><NavigationClose /></IconButton>} onLeftIconButtonTouchTap={this.handleClose} />
+					<Divider />
 
-          <MenuItem onTouchTap={this.handleClose}>
+					<MenuItem onTouchTap={this.handleClose}>
 
-            <CardHeader
-              title={this.state.userName}
-              subtitle={this.state.useremail}
-              avatar={this.state.photoUrl}
-            />
+						<CardHeader
+							title={this.state.userName}
+							subtitle={this.state.useremail}
+							avatar={this.state.photoUrl}
+						/>
 
-            <Divider />
-          </MenuItem>
-          <MenuItem onTouchTap={this.handleClose}><MdEvent style={iconStyles} />
-            <Link to="/" style={darkText}>Latest Events</Link>
-          </MenuItem>
-          {this.state.isAdmin === true ? <MenuItem onTouchTap={this.handleClose}><New style={iconStyles} />
-            <Link to="/new" style={darkText}>Add Event</Link>
-          </MenuItem> : <div></div>}
+						<Divider />
+					</MenuItem>
+					<MenuItem onTouchTap={this.handleClose}><MdEvent style={iconStyles} />
+						<Link to="/" style={darkText}>Latest Events</Link>
+					</MenuItem>
+					{this.state.isAdmin === true ? <MenuItem onTouchTap={this.handleClose}><New style={iconStyles} />
+						<Link to="/new" style={darkText}>Add Event</Link>
+					</MenuItem> : <div></div>}
 
-          {this.state.userName === "" ? <MenuItem onTouchTap={this.handlesignOut}>
-            <MdExitToApp style={iconStyles} />
-            <Link to="/login" style={darkText}>Login</Link>
-          </MenuItem> : (
-              <div>
-                <MenuItem onTouchTap={this.handleClose}><MdLabel style={iconStyles} />
-                  <Link to="/socities" style={darkText}>
-                    Societies Tags
-              </Link>
-                </MenuItem>
-                <MenuItem onTouchTap={this.handlesignOut}><MdExitToApp style={iconStyles} />
-                  <Link to="logout" style={darkText}>Logout</Link>
-                </MenuItem>
-              </div>
-            )}
+					{this.state.userName === "" ? <MenuItem onTouchTap={this.handlesignOut}>
+						<MdExitToApp style={iconStyles} />
+						<Link to="/login" style={darkText}>Login</Link>
+					</MenuItem> : (
+							<div>
+								<MenuItem onTouchTap={this.handleClose}><MdLabel style={iconStyles} />
+									<Link to="/socities" style={darkText}>Societies Tags</Link>
+								</MenuItem>
+								<MenuItem onTouchTap={this.handlesignOut}><MdExitToApp style={iconStyles} />
+									<Link to="logout" style={darkText}>Logout</Link>
+								</MenuItem>
+							</div>
+						)}
 
-        </Drawer>
-      </div>
+				</Drawer>
+			</div>
 
-    )
-  }
+		)
+	}
 }
 
 export default AppBarDrawer

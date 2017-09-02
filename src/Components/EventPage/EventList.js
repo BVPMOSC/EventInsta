@@ -3,7 +3,7 @@ import { Row, Col } from 'react-flexbox-grid';
 import EventCard from './EventCard'
 const EventList = ({ events }) => {
     const listItems = events.map((event) =>
-      <Col xs={12} sm={6} md={4} lg={4}>
+      <Col xs={12} sm={6} md={3} lg={3}>
         <EventCard key={event.toString()} event={event} />
         <h1> </h1>
       </Col>
