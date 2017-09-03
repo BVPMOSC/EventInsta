@@ -9,7 +9,7 @@ const config = {
   messagingSenderId: '627769457667'
 }
 
-firebase.initializeApp(fb_const)
+firebase.initializeApp(config)
 export const ref = firebase.database().ref('/PWA')
 export const eventref = firebase.database()
 
