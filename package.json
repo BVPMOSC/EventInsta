@@ -12,6 +12,7 @@
     "react-cookies": "^0.1.0",
     "react-dom": "^15.6.1",
     "react-icons": "^2.2.5",
+    "react-lazy-load": "^3.0.12",
     "react-scripts": "1.0.10",
     "react-tap-event-plugin": "^2.0.1",
     "semantic-ui-css": "^2.2.12",

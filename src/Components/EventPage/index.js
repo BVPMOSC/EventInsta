@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Grid, Row, Col } from 'react-flexbox-grid';
 import { ref } from '../../config/constants'
 import EventList from './EventList'
 class LatestEvents extends Component {
