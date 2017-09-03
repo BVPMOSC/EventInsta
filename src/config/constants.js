@@ -11,4 +11,6 @@ const config = {
 
 firebase.initializeApp(fb_const)
 export const ref = firebase.database().ref('/PWA')
+export const eventref = firebase.database()
+
 export const firebaseAuth = firebase.auth
