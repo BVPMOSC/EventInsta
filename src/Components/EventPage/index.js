@@ -37,17 +37,7 @@ class LatestEvents extends Component {
   render() {
     return (
       <div>
-        <Grid fluid>
-          <Row>
-            <Col xs={12} md={12} lg={12}>
-              <h1> </h1>
-              <h1> </h1>
-              <br/>
-              
-            </Col>
-          </Row>
-          <EventList events={this.state.events} />
-        </Grid>
+        <EventList events={this.state.events} />
       </div>
     )
   }
