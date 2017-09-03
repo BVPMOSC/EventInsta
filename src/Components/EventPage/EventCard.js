@@ -13,8 +13,8 @@ render ()  {
   const { admin_name, tag, admin_avatar_url, event_heading, sub_heading, image, link,key} = this.props.event;
   return (
 
-    <Card >
-      <Image src={image} />
+    <Card fluid>
+      <Image src={image} fluid />
       <Card.Content>
         <Image floated='right' size='mini' src={admin_avatar_url} />
         <Card.Header>
