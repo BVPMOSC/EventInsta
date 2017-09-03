@@ -1,9 +1,5 @@
 import React ,{Component}from 'react'
-
-import FlatButton from 'material-ui/FlatButton'
 import { Button, Card, Image, Icon } from 'semantic-ui-react'
-import MdPersonAdd from 'react-icons/lib/md/person-add'
-import MdEventSeat from 'react-icons/lib/md/event-seat'
 import {eventref} from './../../config/constants'
 class EventCard extends Component {
   constructor(props) {

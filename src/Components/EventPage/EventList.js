@@ -1,15 +1,20 @@
 import React from 'react';
-import { Row, Col } from 'react-flexbox-grid';
 import EventCard from './EventCard'
+import { Grid, Segment, Card } from 'semantic-ui-react'
+import './EventPage.css'
+
 const EventList = ({ events }) => {
     const listItems = events.map((event) =>
-      <Col xs={12} sm={6} md={3} lg={3}>
-        <EventCard key={event.key} event={event} />
-        <h1> </h1>
-      </Col>
+      // <div className="column-mobi">
+      <Grid.Column mobile={16} tablet={8} computer={4}>
+          <EventCard key={event.key} event={event} />
+      </Grid.Column>
+      // </div>
     );
     return (
-      <Row>{listItems}</Row>
+      <Grid container columns={4} className={'topMargin'}>
+        {listItems}
+      </Grid>
     );
 }
 export default EventList
