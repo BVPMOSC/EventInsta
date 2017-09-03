@@ -21,3 +21,5 @@ yarn-debug.log*
 yarn-error.log*
 
 /.idea
+/.env
+src/config/firebase_constants.js
