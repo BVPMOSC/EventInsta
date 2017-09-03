@@ -9,7 +9,7 @@ const SocietyList = ({ socities }) => {
         </Grid.Column>
     );
     return (
-        <Grid container>{listItems}</Grid>
+        <Grid container className={'topMargin'} >{listItems}</Grid>
     );
 }
 export default SocietyList
