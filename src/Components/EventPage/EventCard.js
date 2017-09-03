@@ -12,7 +12,7 @@ class EventCard extends Component {
 render ()  {
   const { admin_name, tag, admin_avatar_url, event_heading, sub_heading, image, link,key} = this.props.event;
   return (
-    <LazyLoad height={762} offsetVertical={300}>
+    <LazyLoad height={400} offsetVertical={300}>
     <Card fluid>
       <Image src={image} fluid />
       <Card.Content>
