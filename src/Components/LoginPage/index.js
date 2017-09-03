@@ -109,7 +109,7 @@ export default class Login extends Component {
         </div>
         <div style={docsButtonStyle}>
           <Button
-            
+              
             to={`https://github.com/bvpmosc/eventinsta`}
             color='secondary'
             icon='github'
