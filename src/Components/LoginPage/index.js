@@ -98,7 +98,7 @@ export default class Login extends Component {
                   />
                 </Form.Group>
                   <Button.Group size='large' fluid>
-                    <Button icon='google plus' color={'google plus'} onClick={googleSignIn} content={'Google Sign in'} />
+                    <Button type="button" icon='google plus' color={'google plus'} onClick={googleSignIn} content={'Google Sign in'} />
                     <Button.Or />
                     <Form.Button icon='mail outline' color='teal' content={'Continue'} />
                   </Button.Group>

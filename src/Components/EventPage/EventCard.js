@@ -1,4 +1,5 @@
-import React ,{Component}from 'react'
+import React, {Component} from 'react'
+
 import { Button, Card, Image, Icon } from 'semantic-ui-react'
 import {eventref} from './../../config/constants'
 class EventCard extends Component {
