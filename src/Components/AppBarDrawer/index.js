@@ -10,7 +10,8 @@ import MdEvent from 'react-icons/lib/md/event'
 import New from 'react-icons/lib/md/fiber-new'
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
-import { Link } from 'react-router-dom'
+
+import TagsPage from './../TagsPage'
 import { Menu, Segment, Sticky, Image, Card, Popup, Button } from 'semantic-ui-react'
 import * as firebase from 'firebase';
 
@@ -64,21 +65,15 @@ class AppBarDrawer extends Component {
 
 
 	render() {
-		const {isAdmin} = this.props
+		const {isAdmin,children} = this.props
 		return (
 			<div>
-				{/* <AppBar
-					title="EventInsta"
-					style={fixedBar}
-					iconClassNameRight="muidocs-icon-navigation-expand-more"
-					onLeftIconButtonTouchTap={this.handleToggle}
-				/> */}
+			
 				<div>
 
 					<Menu pointing secondary fixed="top" color="teal" floated style={{ background: "white" }}>
-						<Menu.Item name='Home' active={this.state.activeItem === 'Home'} onClick={this.handleItemClick} />
-						<Menu.Item name='Tags' active={this.state.activeItem === 'Tags'} onClick={this.handleItemClick} />
-					{isAdmin? 	<Menu.Item name='New' active={this.state.activeItem === 'New'} onClick={this.handleItemClick} /> :(<div/>)}
+					{children}
+						
 					
 						<Menu.Menu position='right'>
 							<Popup
@@ -107,47 +102,7 @@ class AppBarDrawer extends Component {
 					</Menu>
 
 				</div>
-				<Drawer
-					docked={false}
-					width={300}
-					open={false}
-					onRequestChange={(open) => this.setState({ open })} >
-
-					<AppBar title="" iconElementLeft={<IconButton><NavigationClose /></IconButton>} onLeftIconButtonTouchTap={this.handleClose} />
-					<Divider />
-
-					<MenuItem onTouchTap={this.handleClose}>
-
-						<CardHeader
-							title={this.state.userName}
-							subtitle={this.state.useremail}
-							avatar={this.state.photoUrl}
-						/>
-
-						<Divider />
-					</MenuItem>
-					<MenuItem onTouchTap={this.handleClose}><MdEvent style={iconStyles} />
-						<Link to="/" style={darkText}>Latest Events</Link>
-					</MenuItem>
-					{this.state.isAdmin === true ? <MenuItem onTouchTap={this.handleClose}><New style={iconStyles} />
-						<Link to="/new" style={darkText}>Add Event</Link>
-					</MenuItem> : <div></div>}
-
-					{this.state.userName === "" ? <MenuItem onTouchTap={this.handlesignOut}>
-						<MdExitToApp style={iconStyles} />
-						<Link to="/login" style={darkText}>Login</Link>
-					</MenuItem> : (
-							<div>
-								<MenuItem onTouchTap={this.handleClose}><MdLabel style={iconStyles} />
-									<Link to="/socities" style={darkText}>Societies Tags</Link>
-								</MenuItem>
-								<MenuItem onTouchTap={this.handlesignOut}><MdExitToApp style={iconStyles} />
-									<Link to="logout" style={darkText}>Logout</Link>
-								</MenuItem>
-							</div>
-						)}
-
-				</Drawer>
+			
 			</div>
 
 		)

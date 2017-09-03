@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
-import injectTapEventPlugin from 'react-tap-event-plugin'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import AppBarDrawer from './Components/AppBarDrawer'
 import EventPage from './Components/EventPage'
@@ -16,9 +14,8 @@ import { firebaseAuth, ref } from './config/constants'
 import TagsPage from './Components/TagsPage'
 import LoginPage from './Components/LoginPage'
 import AddPage from './Components/AddPage'
-// import 'semantic-ui-css/semantic.min.css'
+import { Menu, Segment, Sticky, Image, Card, Popup, Button } from 'semantic-ui-react'
 
-injectTapEventPlugin()
 
 const muiTheme = getMuiTheme({
 	palette: {
@@ -63,7 +60,8 @@ class App extends Component {
 					photoUrl: user.photoURL,
 					useremail: user.email,
 					authed: true,
-					loading: false
+					loading: false,
+					activeItem: 'Home'
 				})
 			}	else {
 				this.setState({
@@ -74,8 +72,10 @@ class App extends Component {
 				})
 			}
 		})
-	}
 
+	
+	}
+	handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 	componentWillMount () {
 		var _this = this
 		var eventref = ref.child('/admins')
@@ -97,22 +97,11 @@ class App extends Component {
 	}
 
 	render () {
-		const AdminRoute = ({ component: Component, ...rest }) => (
-      <Route {...rest} render={props => (
-        this.state.isAdmin ? (
-          <Component {...props} />
-        ) : (
-            <Redirect to={{
-	pathname: '/',
-	state: { from: props.location }
-}} />
-          )
-      )} />)
 
 		return (
 
-      <Router>
-        <MuiThemeProvider muiTheme={muiTheme}>
+      <div>
+      
           {this.state.authed ? (
             <div>
               <AppBarDrawer
@@ -121,16 +110,19 @@ class App extends Component {
                 photoUrl={this.state.photoUrl}
                 isAdmin={this.state.isAdmin}
                 useremail={this.state.useremail}
-              />
-              <Switch>
-                <Route exact path="/" component={EventPage} />
-                <AdminRoute path="/new" component={AddPage} />
-                <Route path="/socities" component={TagsPage} />
-              </Switch>
+              >
+							<Menu.Item name='Home' active={this.state.activeItem === 'Home'} onClick={this.handleItemClick} />
+						<Menu.Item name='Tags' active={this.state.activeItem === 'Tags'} onClick={this.handleItemClick} />
+					{this.state.isAdmin? 	<Menu.Item name='New' active={this.state.activeItem === 'New'} onClick={this.handleItemClick} /> :(<div/>)}
+							</AppBarDrawer>
+							{this.state.activeItem === 'Home'?<EventPage/>:<div/>}
+							{this.state.activeItem === 'Tags'?<TagsPage/>:<div/>}
+							{this.state.activeItem === 'New'?<AddPage/>:<div/>}
+              
               <Footer />
             </div>) : (<LoginPage />)}
-        </MuiThemeProvider>
-      </Router>
+      
+      </div>
 
 		)
 	}

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Button, Divider, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import { auth, login, resetPassword, googleSignIn } from './../../helpers/auth'
 import './Login.css'
-import { NavLink } from 'react-router-dom'
 
 var firebase = require('firebase')
 var email, password
@@ -110,7 +109,7 @@ export default class Login extends Component {
         </div>
         <div style={docsButtonStyle}>
           <Button
-            as={NavLink}
+            
             to={`https://github.com/bvpmosc/eventinsta`}
             color='secondary'
             icon='github'
