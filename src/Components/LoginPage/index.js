@@ -103,7 +103,7 @@ export default class Login extends Component {
                         // ...
                       }
                       this.props.gsignin(result.user);
-                    })} content={'Google Sign in'} />
+                    })}} content={'Google Sign in'} />
                     <Button.Or />
                     <Form.Button icon='mail outline' color='teal' content={'Continue'} />
                   </Button.Group>
