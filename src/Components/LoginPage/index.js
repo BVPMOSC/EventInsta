@@ -96,12 +96,12 @@ export default class Login extends Component {
                     />
                   </Form.Group>
                   <Button.Group size='large' fluid>
-                    <Button icon='google plus' color={'google plus'} onClick={()=> {
-                      
-                      googleSignIn().then((result) => {
-                        debugger;
-                      console.log(result.user);
-                      
+                    <Button type="button" icon='google plus' color={'google plus'} onClick={()=>googleSignIn().then((result) => {
+                      if (result.credential) {
+                        // This gives you a Google Access Token. You can use it to access the Google API.
+                        var token = result.credential.accessToken;
+                        // ...
+                      }
                       this.props.gsignin(result.user);
                     })}} content={'Google Sign in'} />
                     <Button.Or />
