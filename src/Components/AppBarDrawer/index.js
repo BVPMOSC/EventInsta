@@ -39,7 +39,6 @@ class AppBarDrawer extends Component {
 			authed: props.authed,
 			userName: props.userName,
 			photoUrl: props.photoUrl,
-			isAdmin: props.isAdmin,
 			useremail: props.useremail,
 			activeItem: 'Home'
 		};
@@ -65,6 +64,7 @@ class AppBarDrawer extends Component {
 
 
 	render() {
+		const {isAdmin} = this.props
 		return (
 			<div>
 				{/* <AppBar
@@ -78,7 +78,8 @@ class AppBarDrawer extends Component {
 					<Menu pointing secondary fixed="top" color="teal" floated style={{ background: "white" }}>
 						<Menu.Item name='Home' active={this.state.activeItem === 'Home'} onClick={this.handleItemClick} />
 						<Menu.Item name='Tags' active={this.state.activeItem === 'Tags'} onClick={this.handleItemClick} />
-						<Menu.Item name='New' active={this.state.activeItem === 'New'} onClick={this.handleItemClick} />
+					{isAdmin? 	<Menu.Item name='New' active={this.state.activeItem === 'New'} onClick={this.handleItemClick} /> :(<div/>)}
+					
 						<Menu.Menu position='right'>
 							<Popup
 							open={this.state.open}
