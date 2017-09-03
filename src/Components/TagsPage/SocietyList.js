@@ -1,15 +1,15 @@
 import React from 'react';
-import { Row, Col } from 'react-flexbox-grid';
 import SocietyCard from './SocietyCard'
+import { Grid } from 'semantic-ui-react'
 const SocietyList = ({ socities }) => {
     const listItems = socities.map((society) =>
-        <Col xs={12} sm={6} md={3} lg={3}>
+        <Grid.Column mobile={16} tablet={8} computer={4}>
             <SocietyCard society={society} />
             <h1> </h1>
-        </Col>
+        </Grid.Column>
     );
     return (
-        <Row>{listItems}</Row>
+        <Grid container className={'topMargin'} >{listItems}</Grid>
     );
 }
 export default SocietyList

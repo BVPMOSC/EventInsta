@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Grid, Row, Col } from 'react-flexbox-grid';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import { firebaseAuth } from '../../config/constants'
@@ -66,15 +65,7 @@ class AddPage extends Component {
     render() {
         return (
             <div>
-                <Grid fluid>
-                    <Row>
-                        <Col xs={12} sm={4} md={4} lg={4}>
-                            <h1> </h1><br />
-                        </Col>
-                    </Row>
-
-                    <Row>
-                        <Col xs={12} sm={4} md={4} lg={4}>
+           
                             <h1> </h1><br />
 
                             <Input id="addevent_heading" defaultValue={this.state.event_heading} onChange={(e, newvalue) => { this.setState({ event_heading: newvalue.value }) }} icon='id card' iconPosition='left' placeholder='Enter Heading...' />
@@ -118,10 +109,6 @@ class AddPage extends Component {
 
                             <br />
 
-                        </Col>
-                    </Row>
-
-                </Grid>
             </div>
         )
     }

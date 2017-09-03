@@ -24,7 +24,7 @@ const style = (
 
   `}</style>
 )
-function handleLogin () {
+function handleLogin() {
   login(email, password)
     .then(() => {
       email = ''
@@ -39,17 +39,15 @@ function handleLogin () {
 
 export default class Login extends Component {
   // noinspection SpellCheckingInspection
-  constructor (props) {
+  constructor(props) {
     super(props)
   }
 
-  componentDidMount () {
-    //  Firebase config
-    var provider = new firebase.auth.GoogleAuthProvider()
-    firebase.auth().languageCode = 'en'
+  componentDidMount() {
+
   }
 
-  render () {
+  render() {
     return (
       <div>
         {style}
@@ -74,31 +72,38 @@ export default class Login extends Component {
             <Grid.Column style={{ maxWidth: 450 }}>
               <Form size='large' onSubmit={handleLogin}>
                 <Segment>
-                <Header size={'huge header'} color='teal' textAlign='center' content={'EventInsta'} />
-                <Divider />
-                <Form.Group widths='equal'>
-                  <Form.Input
-                    fluid
-                    icon='user'
-                    iconPosition='left'
-                    onChange={(e, { value }) => { email = value }}
-                    placeholder='E-mail address'
-                    required
-                  />
-                </Form.Group>
-                <Form.Group widths='equal'>
-                  <Form.Input
-                    fluid
-                    icon='lock'
-                    iconPosition='left'
-                    placeholder='Password'
-                    onChange={(e, { value }) => { password = value }}
-                    type='password'
-                    required
-                  />
-                </Form.Group>
+                  <Header size={'huge header'} color='teal' textAlign='center' content={'EventInsta'} />
+                  <Divider />
+                  <Form.Group widths='equal'>
+                    <Form.Input
+                      fluid
+                      icon='user'
+                      iconPosition='left'
+                      onChange={(e, { value }) => { email = value }}
+                      placeholder='E-mail address'
+                      required
+                    />
+                  </Form.Group>
+                  <Form.Group widths='equal'>
+                    <Form.Input
+                      fluid
+                      icon='lock'
+                      iconPosition='left'
+                      placeholder='Password'
+                      onChange={(e, { value }) => { password = value }}
+                      type='password'
+                      required
+                    />
+                  </Form.Group>
                   <Button.Group size='large' fluid>
-                    <Button icon='google plus' color={'google plus'} onClick={googleSignIn} content={'Google Sign in'} />
+                    <Button type="button" icon='google plus' color={'google plus'} onClick={()=>googleSignIn().then((result) => {
+                      if (result.credential) {
+                        // This gives you a Google Access Token. You can use it to access the Google API.
+                        var token = result.credential.accessToken;
+                        // ...
+                      }
+                      this.props.gsignin(result.user);
+                    })} content={'Google Sign in'} />
                     <Button.Or />
                     <Form.Button icon='mail outline' color='teal' content={'Continue'} />
                   </Button.Group>
@@ -109,7 +114,7 @@ export default class Login extends Component {
         </div>
         <div style={docsButtonStyle}>
           <Button
-              
+
             to={`https://github.com/bvpmosc/eventinsta`}
             color='secondary'
             icon='github'

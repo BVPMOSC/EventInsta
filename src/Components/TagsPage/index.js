@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Grid, Row, Col } from 'react-flexbox-grid';
 import { ref } from '../../config/constants'
 import SocietyList from './SocietyList'
 
@@ -40,22 +39,9 @@ class TagsPage extends Component {
     render() {
         return (
             <div>
-                <Grid fluid>
-                    <Row>
-                        <Col xs={12} sm={4} md={4} lg={4}>
-                            <h1> </h1>
-                            <br/>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col xs={12} sm={4} md={4} lg={4}>
-                            <h1> </h1>
-                            <br/>
-                            <br/>
-                        </Col>
-                    </Row>
+            
                         <SocietyList socities={this.state.socities} />
-                </Grid>
+                
             </div>
         )
     }

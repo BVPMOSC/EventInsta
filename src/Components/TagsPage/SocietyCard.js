@@ -1,13 +1,13 @@
 import React from 'react';
 import { Card, Icon, Image } from 'semantic-ui-react'
-import FlatButton from 'material-ui/FlatButton';
-import RssIcon from 'react-icons/lib/fa/feed';
+import LazyLoad from 'react-lazy-load';
 const SocietyCard = ({ society }) => {
     const { name, subtitle, image, poster_url, following ,site_link} = society;
     return (
 
-        <Card>
-    <Image src={image} size="medium" />
+      <LazyLoad height={400} offsetVertical={300}>
+        <Card fluid>
+    <Image src={image} fluid />
     <Card.Content>
       <Card.Header>
         <a href={site_link}>{name}</a>
@@ -23,6 +23,7 @@ const SocietyCard = ({ society }) => {
       
     </Card.Content>
   </Card>
+  </LazyLoad>
 
     );
 }

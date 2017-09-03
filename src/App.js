@@ -72,6 +72,28 @@ class App extends Component {
     })
   }
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  handleGoogleSignIn(user) {
+    console.log('hid')
+    if (user) {
+      this.setState({
+        userName: user.displayName,
+        photoUrl: user.photoURL,
+        useremail: user.email,
+        authed: true,
+        loading: false,
+        activeItem: 'Home'
+      })
+      console.log('hi')
+    }	else {
+      this.setState({
+        userName: '',
+        photoUrl: '',
+        authed: false,
+        loading: false
+      })
+    }
+  
+  }
   componentWillMount () {
     var _this = this
     var eventref = ref.child('/admins')
@@ -115,7 +137,7 @@ class App extends Component {
 							{this.state.activeItem === 'New' ? <AddPage/> : <div/>}
 
               <Footer />
-            </div>) : (<LoginPage />)}
+            </div>) : (<LoginPage gsignin={this.handleGoogleSignIn}/>)}
 
       </div>
 
