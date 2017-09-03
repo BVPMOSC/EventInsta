@@ -32,7 +32,7 @@ messaging.requestPermission()
 		cookie.save('token', token)
 		console.log(token)
 	}	else	{
-		console.log('same token  ')
+		console.log('same token')
 		console.log(token)
 		cookie.save('token', token)
 	}

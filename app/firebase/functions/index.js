@@ -9,6 +9,8 @@ exports.sendNotifications = functions.database.ref('/PWA/events/{event_id}').onW
     return;
 
   }*/
+  console.log(snapshot);
+
   const text = "trial";
   const payload = {
     notification: {
@@ -19,30 +21,36 @@ exports.sendNotifications = functions.database.ref('/PWA/events/{event_id}').onW
       click_action: `https://${functions.config().firebase.authDomain}`
     }
   };
+  if(snapshot._data==null){
 
-  admin.database().ref('/PWA/fcm_tokens').once('value', function(snapshot) {
-  
-  var registration_tokens=[];
+    admin.database().ref('/PWA/fcm_tokens').once('value', function(snapshot) {
 
-  snapshot.forEach(function(childSnapshot) {
-    var childData = childSnapshot.val();
+      var registration_tokens=[];
+
+      snapshot.forEach(function(childSnapshot) {
+        var childData = childSnapshot.val();
     //console.log(childData.token);
     registration_tokens.push(childData.token);
-  });
-  console.log(registration_tokens);
+      });
+      console.log(registration_tokens);
 
-  admin.messaging().sendToDevice(registration_tokens, payload)
-  .then(function(response) {
+      admin.messaging().sendToDevice(registration_tokens, payload)
+      .then(function(response) {
     // See the MessagingDevicesResponse reference documentation for
     // the contents of response.
     console.log("Successfully sent message:", response);
   })
-  .catch(function(error) {
-    console.log("Error sending message:", error);
-  });
+      .catch(function(error) {
+        console.log("Error sending message:", error);
+      });
 
 
-});
+    });
+
+
+
+  }
+  
 
 
 
@@ -57,7 +65,7 @@ exports.sendNotifications = functions.database.ref('/PWA/events/{event_id}').onW
   .catch(function(error) {
     console.log("Error sending message:", error);
   });
-*/
+  */
 
 
 
