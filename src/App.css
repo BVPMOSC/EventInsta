@@ -23,6 +23,11 @@
   width: 100%;
 
 }
+.menu{
+z-index: 20 !important;
+position: fixed !important;
+background: white !important;
+}
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
