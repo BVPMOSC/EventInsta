@@ -7,6 +7,7 @@ import {
   grey100, grey300, grey400, grey500,
   white, darkBlack, fullBlack
 } from 'material-ui/styles/colors'
+import './App.css'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import Footer from './Components/Footer'
 import { firebaseAuth, ref } from './config/constants'

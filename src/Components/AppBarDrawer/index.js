@@ -72,7 +72,7 @@ class AppBarDrawer extends Component {
 
 				<div>
 
-					<Menu pointing secondary fixed="top" color="teal" floated style={{ background: 'white' }}>
+					<Menu pointing secondary  fixed="top" color='blue' inverted size="massive">
 					{children}
 
 						<Menu.Menu position='right'>

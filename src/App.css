@@ -1,35 +1,16 @@
-.App {
-  text-align: center;
+body {
+  font-family: 'Nunito', sans-serif !important;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+h1 {
+  font-family: 'Nunito', sans-serif;
 }
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+input {
+  font-family: 'Nunito', sans-serif;
+  
 }
-
-.App-intro {
-  font-size: large;
+input::-webkit-input-placeholder {
+  font-family: 'Nunito', sans-serif;
 }
-.Space {
-  display: block;
-  position: relative;
-  width: 100%;
-
-}
-.menu{
-z-index: 20 !important;
-position: fixed !important;
-background: white !important;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+button {
+  font-family: 'Nunito', sans-serif;
 }
