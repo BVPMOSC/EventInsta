@@ -71,7 +71,7 @@ export default class Login extends Component {
           >
             <Grid.Column style={{ maxWidth: 450 }}>
               <Form size='large' onSubmit={handleLogin}>
-                <Segment>
+                <Segment color='red'>
                   <Header size={'huge header'} color='teal' textAlign='center' content={'EventInsta'} />
                   <Divider />
                   <Form.Group widths='equal'>
