@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Menu, Icon } from 'semantic-ui-react'
 import './Footer.css';
 import FaGlobe from 'react-icons/lib/fa/globe'
 import FaGithub from 'react-icons/lib/fa/github'
@@ -9,28 +10,18 @@ const iconStyles = {
   fontSize: 16
 };
 
+const activeItem = 'home'
 class Footer extends Component {
   render() {
     return (
-
-
-      <div >
-         <Divider horizontal>“A product of BVPMOSC”</Divider>
-    <Header as='h4' floated='right'>
-     <a href=""> About Us</a>
-    </Header>
-  
-    <Header as='h4' floated='left'>
-     <a href="">Privacy policy </a>
-    </Header>
-    <Header as='h2' textAlign='center'>
-    <FaGithub/><FaFacebookSquare/><FaGlobe/>
-    </Header>
-  </div>
-        
-
-
-
+        <div>
+            <Menu fixed="bottom" pointing inverted>
+                <Menu.Item position="left" name='home'> A Product of <a href="http://bvpmosc.tech">&nbsp; <u>BVPMOSC</u> </a> </Menu.Item>
+                <Menu.Item> <FaGithub/> </Menu.Item>
+                <Menu.Item> <FaFacebookSquare/> </Menu.Item>
+                <Menu.Item> <FaGlobe/> </Menu.Item>
+            </Menu>
+        </div>
     )
   }
 }
