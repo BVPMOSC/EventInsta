@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { ref } from '../../config/constants'
 import SocietyList from './SocietyList'
 
-
+import {ToastContainer} from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 
 class TagsPage extends Component {
     constructor(props) {
@@ -34,13 +35,14 @@ class TagsPage extends Component {
 
     componentWillUnmount() {
         this.ref.off();
+
     }
 
 
     render() {
         return (
             <div>
-
+   <ToastContainer />
                         <SocietyList socities={this.state.socities} />
 
             </div>

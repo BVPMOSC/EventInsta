@@ -14,3 +14,7 @@ input::-webkit-input-placeholder {
 button {
   font-family: 'Nunito', sans-serif;
 }
+.Toastify__toast-body{
+  font-family: 'Nunito', sans-serif!important;
+  font-size: 1rem;
+}
