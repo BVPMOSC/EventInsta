@@ -30,11 +30,10 @@ class TagsPage extends Component {
                     let ks = Object.keys(fs)
                     childData.followed = false
                     ks.forEach( ele => {
-                        console.log(fs[ele] )
                        if ( fs[ele].token === token) {
                         childData.followed = true
                         childData.followkey = ele
-                        childData.followers = ks.length
+                        childData.fcount = ks.length
                        }
                     })
                 }catch(err) {
