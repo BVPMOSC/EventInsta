@@ -5,7 +5,7 @@ const SocietyCard = ({ society }) => {
   const { name, subtitle, image, poster_url, following, site_link } = society
   return (
 
-    <LazyLoad height={400} offsetVertical={300}>
+    <LazyLoad offsetVertical={300}>
       <Card fluid>
         <Image src={image} fluid />
         <Card.Content>

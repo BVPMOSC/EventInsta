@@ -72,6 +72,9 @@ class App extends Component {
       }
     })
   }
+  handleSignIn (user) {
+
+  }
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
   handleGoogleSignIn(user) {
     console.log('hid')
@@ -93,7 +96,7 @@ class App extends Component {
         loading: false
       })
     }
-  
+
   }
   componentWillMount () {
     var _this = this
@@ -138,7 +141,7 @@ class App extends Component {
 							{this.state.activeItem === 'New' ? <AddPage/> : <div/>}
 
               <Footer />
-            </div>) : (<LoginPage gsignin={this.handleGoogleSignIn}/>)}
+            </div>) : (<LoginPage gsignin={this.handleGoogleSignIn} />)}
 
       </div>
 

@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
-import { Button, Divider, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Button, Divider, Form,  Header, Segment } from 'semantic-ui-react'
 import { auth, login, resetPassword, googleSignIn } from './../../helpers/auth'
 import './Login.css'
 
-var firebase = require('firebase')
-var email, password
 const docsButtonStyle = {
   position: 'fixed',
   margin: '2em',
@@ -24,27 +22,30 @@ const style = (
 
   `}</style>
 )
-function handleLogin() {
-  login(email, password)
-    .then(() => {
-      email = ''
-      password = ''
-    })
-    .catch((error) => {
-      // eslint-disable-next-line
-      error.message === 'EMAIL_NOT_FOUND' ? auth(email, password) : ''
-      // this.setState(setErrorMsg('Invalid username/password.'))
-    })
-}
 
 export default class Login extends Component {
   // noinspection SpellCheckingInspection
   constructor(props) {
     super(props)
+    this.state = {
+      email:'',
+      password:'',
+    }
+    this.handleLogin = this.handleLogin.bind(this)
   }
 
-  componentDidMount() {
-
+  handleLogin() {
+    const {email, password} = this.state
+    login(email, password)
+      .then((user) => {
+       this.setState({email:'', password:''})
+       console.log(user)
+      })
+      .catch((error) => {
+        // eslint-disable-next-line
+        error.message === 'EMAIL_NOT_FOUND' ? auth(email, password) : ''
+        // this.setState(setErrorMsg('Invalid username/password.'))
+      })
   }
 
   render() {
@@ -64,22 +65,17 @@ export default class Login extends Component {
         height: 100%;
       }
     `}</style>
-          <Grid
-            textAlign='center'
-            style={{ height: '100%' }}
-            verticalAlign='middle'
-          >
-            <Grid.Column style={{ maxWidth: 450 }}>
-              <Form size='large' onSubmit={handleLogin}>
+          <div className='lp-wrapper' >
+              <Form size='large' onSubmit={this.handleLogin} className='lp-form' >
                 <Segment color='red'>
-                  <Header size={'huge header'} color='teal' textAlign='center' content={'EventInsta'} />
+                  <Header size={'huge'} color='teal' textAlign='center' content={'EventInsta'} />
                   <Divider />
                   <Form.Group widths='equal'>
                     <Form.Input
                       fluid
                       icon='user'
                       iconPosition='left'
-                      onChange={(e, { value }) => { email = value }}
+                      onChange={(e, { value }) => this.setState({email:value})}
                       placeholder='E-mail address'
                       required
                     />
@@ -90,33 +86,35 @@ export default class Login extends Component {
                       icon='lock'
                       iconPosition='left'
                       placeholder='Password'
-                      onChange={(e, { value }) => { password = value }}
+                      onChange={(e, { value }) => this.setState({password:value})}
                       type='password'
                       required
                     />
                   </Form.Group>
                   <Button.Group size='large' fluid>
-                    <Button type="button" icon='google plus' color={'google plus'} onClick={()=>googleSignIn().then((result) => {
+                    <Button type="button" icon='google plus' color={'google plus'} onClick={()=> googleSignIn().then((result) => {
                       if (result.credential) {
                         // This gives you a Google Access Token. You can use it to access the Google API.
                         var token = result.credential.accessToken;
                         // ...
                       }
+                      console.log(result)
                       this.props.gsignin(result.user);
-                    })} content={'Google Sign in'} />
+                    }).catch(err=>console.log(err))
+
+                    } content={'Google Sign in'} />
                     <Button.Or />
-                    <Form.Button icon='mail outline' color='teal' content={'Continue'} />
+                    <Form.Button icon='mail outline' color='teal' content={'Login'} onClick={this.handleLogin} />
                   </Button.Group>
                 </Segment>
               </Form>
-            </Grid.Column>
-          </Grid>
+         </div>
         </div>
         <div style={docsButtonStyle}>
           <Button
 
             to={`https://github.com/bvpmosc/eventinsta`}
-            color='secondary'
+            color='black'
             icon='github'
             content='Source'
             target='_blank'
