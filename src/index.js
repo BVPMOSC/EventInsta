@@ -17,34 +17,40 @@ if ('serviceWorker' in navigator) {
 const messaging = firebase.messaging()
 var database = firebase.database().ref()
 var fcm_token_ref = database.child('/PWA/fcm_tokens')
-messaging.requestPermission()
-.then(function () {
-	console.log('yay permission granted')
-	return messaging.getToken()
-})
-.then(function (token) {
-	var newRef = fcm_token_ref.push()
-	if (cookie.load('token') !== token) {
-		console.log('new token ')
-		newRef.set({
-			token: token
-		})
-		cookie.save('token', token)
-		console.log(token)
-	}	else	{
-		console.log('same token')
-		console.log(token)
-		cookie.save('token', token)
-	}
-})
+try {
+	messaging.requestPermission()
+	.then(function () {
+		console.log('yay permission granted')
+		return messaging.getToken()
+	})
+	.then(function (token) {
+		var newRef = fcm_token_ref.push()
+		if (cookie.load('token') !== token) {
+			console.log('new token ')
+			newRef.set({
+				token: token
+			})
+			cookie.save('token', token)
+			console.log(token)
+		}	else	{
+			console.log('same token')
+			console.log(token)
+			cookie.save('token', token)
+		}
+	})
 
-.catch(function (err) {
-	console.log('no permission')
-})
-messaging.onMessage(function (payload) {
+	.catch(function (err) {
+		console.log('no permission')
+	})
+	messaging.onMessage(function (payload) {
 		// this gets invoked when user is on page and the database is updated
 	console.log('onMessage', payload)
 })
+
+} catch(err) {
+console.log(err)
+}
+
 
 ReactDOM.render(<App />, document.getElementById('root'))
 registerServiceWorker()
