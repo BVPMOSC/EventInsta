@@ -5,7 +5,7 @@ import { Grid } from 'semantic-ui-react'
 const SocietyList = ({ socities }) => {
     const listItems = socities.map((society) =>
         <Grid.Column mobile={16} tablet={8} computer={5}>
-            <SocietyCard society={society} key={society.name}  />
+            <SocietyCard society={society} key={society.name +society.link}  />
             <h1> </h1>
         </Grid.Column>
     );
