@@ -19,7 +19,7 @@ const SocietyCard = ({ society }) => {
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-        <Button compact color='blue' label={<Label basic color='blue'>{following}</Label>} icon='feed' content='follow' />
+        <Button compact float='right' color='blue' label={<Label basic color='blue'>{following}</Label>} icon='feed' content='' labelPosition='right' />
         </Card.Content>
       </Card>
     </LazyLoad>
