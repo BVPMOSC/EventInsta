@@ -34,11 +34,13 @@ class TagsPage extends Component {
                        if ( fs[ele].token === token) {
                         childData.followed = true
                         childData.followkey = ele
+                        childData.followers = ks.length
                        }
                     })
                 }catch(err) {
                     console.log(err)
                     childData.followed = false
+                    childData.followers = 0
                 }
 
 

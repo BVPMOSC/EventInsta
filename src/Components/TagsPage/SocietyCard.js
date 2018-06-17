@@ -115,7 +115,7 @@ export default class SocietyCard extends Component {
     }
   }
   render() {
-    const { name, subtitle, image, following, site_link } = this.props.society;
+    const { name, subtitle, image, followers, site_link } = this.props.society;
     return (
       <LazyLoad offsetVertical={300}>
         <Card fluid>
@@ -132,7 +132,7 @@ export default class SocietyCard extends Component {
               color="blue"
               label={
                 <Label basic color="blue">
-                  {following}
+                  {followers}
                 </Label>
               }
               // onClick={this.handleFollow}

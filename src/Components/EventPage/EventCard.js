@@ -38,7 +38,7 @@ render ()  {
       <Card.Content extra>
         <div className='ui '>
           <Button
-          onClick={()=>{ 
+          onClick={()=>{
             if(this.state.subscribed){
               eventref.ref(`/PWA/users/${uid}/going`).child(key).remove()
               eventref.ref(`/PWA/events/${key}`).update({'/going':this.state.going - 1}).then(()=>{
@@ -60,7 +60,7 @@ render ()  {
 
             label={{ as: 'a', basic: true, content: `${this.state.going}` }}
             labelPosition='right'
-            content={this.state.subscribed==true?'going': 'will go'}
+            content={this.state.subscribed === true?'going': 'will go'}
           />
           {/*<Button animated='vertical' color="teal" basic >
             <Button.Content hidden>view</Button.Content>
