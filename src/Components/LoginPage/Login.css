@@ -1,21 +1,182 @@
-body{
-    /* background-color: #333333; */
-
-}
-.lp-wrapper {
-    background: whitesmoke;
-    width: 100vw;
-    display: flex;
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+.lp-wrapper{
     height: 100vh;
-    align-items: center;
+    width: 100vw;
     justify-content: center;
+    align-items: center;
+
+   }
+.login__form {
+    background: #fff;
+    color: #333;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 5px
 }
-.lp-form {
-    width: 40vw;
+.login__form .login__header {
+    padding-top: 30px;
+    text-align: center;
+    margin-bottom: 60px
 }
-@media only screen and (max-width: 768px) {
-    .lp-form {
-        width: 90vw;
+.login__form .login__header .login__title {
+    font-size: 24px;
+    font-weight: 400
+}
+.login__form .login__main {
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto
+}
+.login__form .login__main .login__group {
+    position: relative
+}
+.login__form .login__main .login__group .login__input {
+    margin-top: 50px;
+    padding: 10px 10px 10px 5px;
+    color: #333;
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    font-size: 16px;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #d0dce7;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box
+}
+.login__form .login__main .login__group .login__input:focus {
+    outline: none
+}
+.login__form .login__main .login__group .login__input:focus~label,
+.login__form .login__main .login__group .login__input:valid~label {
+    top: -20px;
+    font-size: 12px;
+    text-transform: uppercase
+}
+.login__form .login__main .login__group .login__label {
+    color: #333;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    -webkit-transition: .2s ease all;
+    transition: .2s ease all
+}
+.login__form .login__main .login__terms {
+    font-size: 14px;
+    color: #a8b8c4;
+    margin: 40px auto;
+    line-height: 19px;
+}
+.login__form .login__main .login__terms a {
+    text-decoration: none;
+    color: #007ee5
+}
+.login__footer{
+    position: absolute;
+    bottom: 0;
+}
+.login__form .login__button {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    width: 100vw;
+    background: #007ee5;
+    position: relative;
+    border: none;
+    border-radius: 2px;
+    color: #fff;
+    height: 45px;
+    font-size: 14px;
+    margin: 0.2em;
+    bottom: 0;
+
+    /* position: absolute */
+}
+#git-show{
+    display: none;
+}
+.login__button:hover {
+    cursor: pointer;
+}
+.login__bar {
+    position: relative;
+    display: block
+}
+.login__bar:before,
+.login__bar:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: #007ee5;
+    transition: .2s ease all;
+    -moz-transition: .2s ease all;
+    -webkit-transition: .2s ease all
+}
+.login__bar:before {
+    left: 50%
+}
+.login__bar:after {
+    right: 50%
+}
+input:focus~.login__bar:before,
+input:focus~.login__bar:after {
+    width: 50%
+}
+.bold {
+    font-weight: 700!important;
+}
+#gb {
+   background: #db3236;
+}
+
+@media (min-width: 500px) {
+    .lp-full{
+        height: 100vh;
+        background-size: cover !important;
+        background: url('https://raw.githubusercontent.com/BVPMOSC/gsoc/master/back.png');
+    }
+    .login-form{
+        padding-top:15vh;
+       }
+    .login__form {
+        max-width: 400px;
+        min-height: 550px;
+        box-shadow: 8px 6px 11px 0px rgba(27, 27, 27, 0.28);
+        margin-left: auto;
+        margin-right: auto
+    }
+    .login__footer{
+        position: relative;
+    }
+    .login__title {
+        font-weight: bold;
+        position: relative;
+        font-family: 'Montserrat', sans-serif;
     }
 
+    .login__footer {
+        text-align: center
+    }
+    .login__button{
+   box-shadow:7px 8px 0px 0px black;
+
+}
+    .login__footer .login__button {
+        bottom: initial;
+        position: initial;
+        width: 320px;
+        margin:0.5em;
+    }
+    #git-show{
+        display: block;
+    }
+}
+
+.blue {
+    background-color: #007ee5!important;
 }

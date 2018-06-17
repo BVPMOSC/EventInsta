@@ -56,7 +56,7 @@ class AddPage extends Component {
         <Grid.Row centered>
           <Grid.Column textAlign='center' >
             <Grid.Row />
-            <Segment color='blue'>
+            <Segment color='red'>
               <h1> New Event🤘🤘</h1>
               <br />
               <Input id='addevent_heading'
