@@ -1,5 +1,7 @@
 import React from 'react'
 import { Card, Icon, Image, Button ,Label} from 'semantic-ui-react'
+import test from "../../helpers/1.jpg"
+import LazyImage from "../LazyImage"
 import LazyLoad from 'react-lazy-load'
 const SocietyCard = ({ society }) => {
   const { name, subtitle, image, poster_url, following, site_link } = society
@@ -7,7 +9,7 @@ const SocietyCard = ({ society }) => {
 
     <LazyLoad offsetVertical={300}>
       <Card fluid>
-        <Image src={image} fluid />
+      <LazyImage srcPreload={test} srcLoaded={image} height={200}  />
         <Card.Content>
           <Card.Header>
             <a href={site_link}>{name}</a>

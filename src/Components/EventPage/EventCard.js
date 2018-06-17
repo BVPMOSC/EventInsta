@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import LazyLoad from 'react-lazy-load';
-import { Button, Card, Image, Icon } from 'semantic-ui-react'
+import test from "../../helpers/1.jpg"
+import { Button, Card,Image, Icon } from 'semantic-ui-react'
+import LazyImage from "../LazyImage"
 import {eventref} from './../../config/constants'
 class EventCard extends Component {
   constructor(props) {
@@ -12,11 +14,11 @@ class EventCard extends Component {
 render ()  {
   const { admin_name, tag, admin_avatar_url, event_heading, sub_heading, image, link,key} = this.props.event;
   return (
-    <LazyLoad height={400} offsetVertical={300}>
+    <LazyLoad offsetVertical={300}>
     <Card fluid>
-      <Image src={image} fluid />
+      <LazyImage srcPreload={test} srcLoaded={image} height={160} />
       <Card.Content>
-        <Image floated='right' size='mini' src={admin_avatar_url} />
+        <Image floated='right' size='mini' src={admin_avatar_url}  />
         <Card.Header>
           {event_heading}
         </Card.Header>
