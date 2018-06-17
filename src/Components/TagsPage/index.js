@@ -28,18 +28,18 @@ class TagsPage extends Component {
                     const token = cookie.load("token");
                     let fs = childData.followers
                     let ks = Object.keys(fs)
+                    childData.fcount = ks.length
                     childData.followed = false
                     ks.forEach( ele => {
                        if ( fs[ele].token === token) {
                         childData.followed = true
                         childData.followkey = ele
-                        childData.fcount = ks.length
                        }
                     })
                 }catch(err) {
                     console.log(err)
                     childData.followed = false
-                    childData.followers = 0
+                    childData.fcount = 0
                 }
 
 

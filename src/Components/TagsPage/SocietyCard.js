@@ -132,7 +132,7 @@ export default class SocietyCard extends Component {
               color="blue"
               label={
                 <Label basic color="blue">
-                  {fcount + ''}
+                  {fcount? fcount:0}
                 </Label>
               }
               // onClick={this.handleFollow}
