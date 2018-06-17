@@ -3,6 +3,7 @@ import { ref } from '../../config/constants'
 import SocietyList from './SocietyList'
 
 
+
 class TagsPage extends Component {
     constructor(props) {
         super(props);
@@ -18,7 +19,7 @@ class TagsPage extends Component {
 
         this.ref.once('value', function (snapshot) {
             var items = [];
-            snapshot.forEach(function (childSnapshot) {                
+            snapshot.forEach(function (childSnapshot) {
                 var childData = childSnapshot.val();
                 items.push(childData);
             });
@@ -39,9 +40,9 @@ class TagsPage extends Component {
     render() {
         return (
             <div>
-            
+
                         <SocietyList socities={this.state.socities} />
-                
+
             </div>
         )
     }
