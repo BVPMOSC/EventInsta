@@ -3,11 +3,12 @@ import EventCard from './EventCard'
 import { Grid } from 'semantic-ui-react'
 import './EventPage.css'
 
-const EventList = ({ events }) => {
+const EventList = ({ events, subs }) => {
+    console.log('sd', subs)
     const listItems = events.map((event) =>
       // <div className="column-mobi">
       <Grid.Column mobile={16} tablet={8} computer={4}>
-          <EventCard key={event.key} event={event} />
+          <EventCard key={event.key} event={event} subscribed={subs.includes(event.key)}/>
       </Grid.Column>
       // </div>
     );

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ref } from '../../config/constants'
+import { ref, firebaseAuth } from '../../config/constants'
 import EventList from './EventList'
 class LatestEvents extends Component {
 
@@ -13,6 +13,18 @@ class LatestEvents extends Component {
 
     var _this = this
     this.ref = ref.child("/events")
+    
+    var uid = firebaseAuth().currentUser.uid
+    this.going = ref.child(`/users/${uid}/going`)
+    
+    var subs = [];
+    this.going.once('value', function (snapshot) {
+        snapshot.forEach(function (childSnapshot) {
+          var childData = childSnapshot.val()['key'];
+          var childKey =childSnapshot.key;
+          subs.push(childKey);
+        });
+    });
 
     this.ref.once('value', function (snapshot) {
       var items = [];
@@ -24,8 +36,10 @@ class LatestEvents extends Component {
         // ...
       });
 
+            
       _this.setState({
-        events: items
+        events: items,
+        subscribed: subs
       });
 
     });
@@ -36,7 +50,7 @@ class LatestEvents extends Component {
   render() {
     return (
       <div>
-        <EventList events={this.state.events} />
+        <EventList events={this.state.events} subs={this.state.subscribed} />
       </div>
     )
   }
