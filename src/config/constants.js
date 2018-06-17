@@ -1,5 +1,5 @@
 import firebase from 'firebase'
-import fb_const from './firebase_constants'
+
 const config = {
   apiKey: 'AIzaSyCY6ZkAsb-CTT2mEu-J4FeaeF90USDCU7k',
   authDomain: 'learning-5e04c.firebaseapp.com',

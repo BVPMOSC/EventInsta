@@ -1,16 +1,10 @@
 import React, { Component } from 'react'
-import { Menu, Icon } from 'semantic-ui-react'
+import { Menu } from 'semantic-ui-react'
 import './Footer.css';
 import FaGlobe from 'react-icons/lib/fa/globe'
 import FaGithub from 'react-icons/lib/fa/github'
 import FaFacebookSquare from 'react-icons/lib/fa/facebook-square'
-import { Header ,Segment,Divider} from 'semantic-ui-react'
-const iconStyles = {
-  marginRight: 8,
-  fontSize: 16
-};
 
-const activeItem = 'home'
 class Footer extends Component {
   render() {
     return (

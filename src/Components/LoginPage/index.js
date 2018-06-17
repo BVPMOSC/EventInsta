@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Divider, Form,  Header, Segment } from 'semantic-ui-react'
-import { auth, login, resetPassword, googleSignIn } from './../../helpers/auth'
+import { auth, login, googleSignIn } from './../../helpers/auth'
 import './Login.css'
 
 const docsButtonStyle = {
@@ -95,7 +95,7 @@ export default class Login extends Component {
                     <Button type="button" icon='google plus' color={'google plus'} onClick={()=> googleSignIn().then((result) => {
                       if (result.credential) {
                         // This gives you a Google Access Token. You can use it to access the Google API.
-                        var token = result.credential.accessToken;
+                        // var token = result.credential.accessToken;
                         // ...
                       }
                       console.log(result)

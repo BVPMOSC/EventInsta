@@ -1,14 +1,8 @@
 import React, { Component } from 'react'
-import TextField from 'material-ui/TextField'
-import RaisedButton from 'material-ui/RaisedButton'
 import { firebaseAuth } from '../../config/constants'
 import { ref } from '../../config/constants'
 import { Input } from 'semantic-ui-react'
 import { Button, Icon, Segment, Grid } from 'semantic-ui-react'
-
-const style = {
-  margin: 12
-}
 
 function handleSend(state) {
   var eventref = ref.child('/events')

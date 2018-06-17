@@ -1,6 +1,6 @@
 import React from 'react';
 import EventCard from './EventCard'
-import { Grid, Segment, Card } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 import './EventPage.css'
 
 const EventList = ({ events }) => {

@@ -1,33 +1,6 @@
 import React, { Component } from 'react'
-import AppBar from 'material-ui/AppBar'
-import Drawer from 'material-ui/Drawer'
-import Divider from 'material-ui/Divider'
-import { CardHeader } from 'material-ui/Card'
-import MenuItem from 'material-ui/MenuItem'
-import MdLabel from 'react-icons/lib/md/label'
-import MdExitToApp from 'react-icons/lib/md/exit-to-app'
-import MdEvent from 'react-icons/lib/md/event'
-import New from 'react-icons/lib/md/fiber-new'
-import IconButton from 'material-ui/IconButton'
-import NavigationClose from 'material-ui/svg-icons/navigation/close'
-
-import TagsPage from './../TagsPage'
-import { Menu, Segment, Sticky, Image, Card, Popup, Button } from 'semantic-ui-react'
+import { Menu, Image, Card, Popup, Button } from 'semantic-ui-react'
 import * as firebase from 'firebase'
-
-const iconStyles = {
-  marginRight: 16,
-  marginLeft: 24,
-  fontSize: 24,
-  color: 'rgba(0,0,0,0.54)'
-}
-const darkText = {
-  color: 'rgba(0,0,0,0.87)',
-  fontWeight: 500
-}
-const fixedBar = {
-  position: 'fixed'
-}
 
 const userMenuStyle = {
 	boxShadow: 'none'
