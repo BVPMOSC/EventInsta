@@ -3,25 +3,32 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 h1 {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 input {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 
 }
 input::-webkit-input-placeholder {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 button {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 .Toastify__toast-body{
   font-family: 'Open Sans', sans-serif!important;
   font-size: 1.2rem;
 }
-
+.opensan {
+  font-weight: 700;
+  font-family: 'Open Sans', sans-serif!important;
+}
 .item  {
   font-weight: 700;
   font-family: 'Open Sans', sans-serif!important;
   font-size: 1.6rem;
+}
+
+@media only screen and (max-width: 768px) {
+ 
 }

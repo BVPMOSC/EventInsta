@@ -9,8 +9,8 @@ class Footer extends Component {
   render() {
     return (
         <div>
-            <Menu fixed="bottom" pointing inverted>
-                <Menu.Item position="left" name='home'> A Product of <a href="http://bvpmosc.tech">&nbsp; <u>BVPMOSC</u> </a> </Menu.Item>
+            <Menu fixed="bottom" pointing className='black' inverted >
+                <Menu.Item position="left" name='home'> A Product of <a href="http://bvpmosc.tech" className='opensan' >&nbsp; <u>BVPMOSC</u> </a> </Menu.Item>
                 <Menu.Item> <FaGithub/> </Menu.Item>
                 <Menu.Item> <FaFacebookSquare/> </Menu.Item>
                 <Menu.Item> <FaGlobe/> </Menu.Item>

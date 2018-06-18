@@ -18,3 +18,13 @@
   font-weight: 500;
   margin-left: 10vw;
 }
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .ei-date h1{
+    width: 100vw;
+    margin-left:0;
+    text-align: center;
+    font-size:3rem;
+    font-weight: 500;
+ }
+}

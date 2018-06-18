@@ -45,7 +45,7 @@ class AppBarDrawer extends Component {
 
 				<div>
 
-					<Menu pointing secondary  fixed="top" color='blue' inverted size="massive" className="shadow" >
+					<Menu pointing secondary  fixed="top" color='white' inverted size="massive" className="shadow grad" >
 					{children}
 
 						<Menu.Menu position='right'>

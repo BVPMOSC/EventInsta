@@ -177,6 +177,15 @@ input:focus~.login__bar:after {
     }
 }
 
-.blue {
-    background-color: #007ee5!important;
+.grad{
+    background: #C33764!important;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #1D2671, #C33764) !important;  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #1D2671, #C33764)!important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.black  div{
+    font-size: 1rem!important;
+}
+.black {
+    background: black!important;
 }
