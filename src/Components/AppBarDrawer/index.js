@@ -39,7 +39,7 @@ class AppBarDrawer extends Component {
   }
 
   render () {
-    const {isAdmin, children} = this.props
+    const {children} = this.props
     return (
 			<div>
 

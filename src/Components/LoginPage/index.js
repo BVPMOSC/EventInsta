@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Button } from "semantic-ui-react";
 import { auth, login, googleSignIn } from "./../../helpers/auth";
 import "./Login.css";
-import { truncate } from "fs";
+
 
 const docsButtonStyle = {
   position: "fixed",
@@ -48,6 +48,7 @@ export default class Login extends Component {
       .catch(error => {
         // eslint-disable-next-line
         this.setState({ email: "", password: "",loading:false});
+        // eslint-disable-next-line
         error.message === "EMAIL_NOT_FOUND" ? auth(email, password) : "";
         // this.setState(setErrorMsg('Invalid username/password.'))
       });
@@ -94,8 +95,8 @@ export default class Login extends Component {
                 <p className="login__terms">
                   By Signing in or clicking continue, I confirm that I have read
                   and agree to the
-                  <a href="#"> Terms</a> and
-                  <a href="#"> Privacy Policy</a>
+                  <a href=""> Terms</a> and
+                  <a href=""> Privacy Policy</a>
                 </p>
               </main>
               <footer className="login__footer">

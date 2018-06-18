@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 import LazyLoad from 'react-lazy-load';
 import test from "../../helpers/1.jpg"
-import { Button, Card, Image, Icon } from 'semantic-ui-react'
+import { Button, Card, Image } from 'semantic-ui-react'
 import LazyImage from "../LazyImage"
-import {ref, eventref, firebaseAuth} from './../../config/constants'
-import firebase from 'firebase'
+import {eventref, firebaseAuth} from './../../config/constants'
+
 
 
 class EventCard extends Component {
@@ -18,7 +18,7 @@ class EventCard extends Component {
   }
 render ()  {
   const uid = firebaseAuth().currentUser.uid
-  const { admin_name, tag, admin_avatar_url, event_heading, sub_heading, image, link,key} = this.props.event;
+  const {  tag, admin_avatar_url, event_heading, sub_heading, image,key} = this.props.event;
   return (
     <LazyLoad offsetVertical={300}>
     <Card fluid className="appstore-card" >

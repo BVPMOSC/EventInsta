@@ -36,6 +36,7 @@ export default class SocietyCard extends Component {
         )
           .then(response => {
             if (response.status < 200 || response.status >= 400) {
+              // eslint-disable-next-line 
               throw "Error subscribing to topic: " +
                 response.status +
                 " - " +
@@ -82,6 +83,7 @@ export default class SocietyCard extends Component {
           )
             .then(response => {
               if (response.status < 200 || response.status >= 400) {
+                // eslint-disable-next-line
                 throw "Error subscribing to topic: " +
                   response.status +
                   " - " +

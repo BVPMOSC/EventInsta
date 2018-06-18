@@ -57,7 +57,7 @@ class AddPage extends Component {
           <Grid.Column textAlign='center' >
             <Grid.Row />
             <Segment color='red'>
-              <h1> New Event🤘🤘</h1>
+              <h1> New Event  <span role='img' aria-label='yoyo'>🤘🤘</span></h1>
               <br />
               <Input id='addevent_heading'
                 size='large'
@@ -96,7 +96,8 @@ class AddPage extends Component {
                 color='red'
                 onClick={() => { var st = this.state; handleSend(st) }}
               >
-                <Button.Content visible>Add Event 🎉</Button.Content>
+
+                <Button.Content visible>Add Event <span role='img' aria-label='party'>🎉</span> </Button.Content>
                 <Button.Content hidden>
                   <Icon name='right arrow' />
                 </Button.Content>

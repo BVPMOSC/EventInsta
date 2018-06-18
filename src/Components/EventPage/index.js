@@ -18,7 +18,7 @@ class LatestEvents extends Component {
     var subs = [];
     this.going.once("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
-        var childData = childSnapshot.val()["key"];
+        // var childData = childSnapshot.val()["key"];
         var childKey = childSnapshot.key;
         subs.push(childKey);
       });

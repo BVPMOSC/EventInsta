@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import SocietyCard from "./SocietyCard";
 import { Grid } from "semantic-ui-react";
-import { ref } from "../../config/constants"
-import cookie from "react-cookies";
+
 export default class SocietyList extends Component {
 
   render() {
