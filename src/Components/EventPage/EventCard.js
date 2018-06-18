@@ -21,7 +21,7 @@ render ()  {
   const { admin_name, tag, admin_avatar_url, event_heading, sub_heading, image, link,key} = this.props.event;
   return (
     <LazyLoad offsetVertical={300}>
-    <Card fluid>
+    <Card fluid className="appstore-card" >
       <LazyImage srcPreload={test} srcLoaded={image} height={160} />
       <Card.Content>
         <Image floated='right' size='mini' src={admin_avatar_url}  />

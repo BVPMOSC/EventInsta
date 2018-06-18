@@ -118,7 +118,7 @@ export default class SocietyCard extends Component {
     const { name, subtitle, image, fcount, site_link } = this.props.society;
     return (
       <LazyLoad offsetVertical={300}>
-        <Card fluid>
+        <Card fluid className="appstore-card" >
           <LazyImage srcPreload={test} srcLoaded={image} height={200} />
           <Card.Content>
             <Card.Header>

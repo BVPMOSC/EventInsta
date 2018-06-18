@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
 body {
-  font-family: 'Nunito', sans-serif !important;
+  font-family: 'Open Sans', sans-serif;
 }
 h1 {
   font-family: 'Nunito', sans-serif;
@@ -15,6 +16,12 @@ button {
   font-family: 'Nunito', sans-serif;
 }
 .Toastify__toast-body{
-  font-family: 'Nunito', sans-serif!important;
-  font-size: 1rem;
+  font-family: 'Open Sans', sans-serif!important;
+  font-size: 1.2rem;
+}
+
+.item  {
+  font-weight: 700;
+  font-family: 'Open Sans', sans-serif!important;
+  font-size: 1.6rem;
 }

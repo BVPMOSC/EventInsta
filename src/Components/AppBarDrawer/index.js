@@ -45,7 +45,7 @@ class AppBarDrawer extends Component {
 
 				<div>
 
-					<Menu pointing secondary  fixed="top" color='blue' inverted size="massive">
+					<Menu pointing secondary  fixed="top" color='blue' inverted size="massive" className="shadow" >
 					{children}
 
 						<Menu.Menu position='right'>
@@ -71,7 +71,7 @@ class AppBarDrawer extends Component {
 									</Card.Content>
 								</Card>
 										}
-								trigger={<Menu.Item name='' icon={`user outline`} onClick={this.handleToggle} />}
+								trigger={<Menu.Item name='' icon={`user circle outline`} onClick={this.handleToggle} />}
 
 							/> </Menu.Menu>
 					</Menu>
