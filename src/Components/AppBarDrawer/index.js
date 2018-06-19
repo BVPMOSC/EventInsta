@@ -39,6 +39,8 @@ class AppBarDrawer extends Component {
   	// check if the click is outside popup
   	// following logic can be moved to OutsideAlerter but would involve passing down popupRef
   	
+  	if(!this.popupRef.popupCoords) return //defensive coding
+
   	let {left, right, top, bottom} = this.popupRef.popupCoords
   	let {clientX, clientY} = e
   	if(clientX <right && clientX >left) {
