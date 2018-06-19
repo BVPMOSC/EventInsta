@@ -93,10 +93,9 @@ class App extends Component {
 
   render () {
     return (
-
       <div>
-
-          {this.state.authed ? (
+          { this.state.loading && <div>Loading...</div> }
+          { !this.state.loading && this.state.authed && (
             <div>
               <AppBarDrawer
                 authed={this.authed}
@@ -107,17 +106,19 @@ class App extends Component {
               >
 							<Menu.Item name='Home' active={this.state.activeItem === 'Home'} onClick={this.handleItemClick} />
 						<Menu.Item name='Tags' active={this.state.activeItem === 'Tags'} onClick={this.handleItemClick} />
-					{this.state.isAdmin ? 	<Menu.Item name='New' active={this.state.activeItem === 'New'} onClick={this.handleItemClick} /> : (<div/>)}
+					     {this.state.isAdmin ? 	<Menu.Item name='New' active={this.state.activeItem === 'New'} onClick={this.handleItemClick} /> : (<div/>)}
 							</AppBarDrawer>
 							{this.state.activeItem === 'Home' ? <EventPage/> : <div/>}
 							{this.state.activeItem === 'Tags' ? <TagsPage/> : <div/>}
 							{this.state.activeItem === 'New' ? <AddPage/> : <div/>}
 
               <Footer />
-            </div>) : (<LoginPage gsignin={this.handleGoogleSignIn} />)}
+            </div>) 
+          }
+
+          { !this.state.loading && !this.state.authed && (<LoginPage gsignin={this.handleGoogleSignIn} />) }
 
       </div>
-
     )
   }
 }
