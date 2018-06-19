@@ -24,11 +24,31 @@ class AppBarDrawer extends Component {
       useremail: props.useremail,
       activeItem: 'Home'
     }
+
+    this.popupRef = null
   }
+
+  setPopupRef = (node) => {this.popupRef= node;}
+
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-  handleToggle = () => this.setState({ open: !this.state.open });
+  handleToggle = () => {this.setState({ open: !this.state.open });}
 
   handleClose = () => this.setState({ open: false });
+
+  handleClickOutside = (e) => {
+  	// check if the click is outside popup
+  	// following logic can be moved to OutsideAlerter but would involve passing down popupRef
+  	
+  	let {left, right, top, bottom} = this.popupRef.popupCoords
+  	let {clientX, clientY} = e
+  	if(clientX <right && clientX >left) {
+  		if(clientY < top || clientY > bottom) {
+  			this.handleClose()
+  		}
+  	} else {
+  		this.handleClose()
+  	}
+  }
 
   handlesignOut = () => {
     firebase.auth().signOut().then(function () {
@@ -43,16 +63,17 @@ class AppBarDrawer extends Component {
   render () {
     const {children} = this.props
     return (
-    		<OutsideAlerter handler={this.handleClose}>
+			<div>
+
 				<div>
 
-					<div>
+					<Menu pointing secondary  fixed="top" color='white' inverted size="massive" className="shadow grad" >
+					{children}
 
-						<Menu pointing secondary  fixed="top" color='white' inverted size="massive" className="shadow grad" >
-						{children}
-
-							<Menu.Menu position='right'>
+						<Menu.Menu position='right'>
+							<OutsideAlerter handler={this.handleClickOutside} >
 								<Popup
+								ref={this.setPopupRef}
 								open={this.state.open}
 
 									content={
@@ -76,13 +97,14 @@ class AppBarDrawer extends Component {
 											}
 									trigger={<Menu.Item name='' icon={`user circle outline`} onClick={this.handleToggle} />}
 
-								/> </Menu.Menu>
-						</Menu>
-
-					</div>
+								/>
+							</ OutsideAlerter> 
+							</Menu.Menu>
+					</Menu>
 
 				</div>
-			</OutsideAlerter>
+
+			</div>
     )
   }
 }

@@ -43,5 +43,5 @@ export default class OutsideAlerter extends Component {
 
 OutsideAlerter.propTypes = {
   children: PropTypes.element.isRequired,
-  handler: PropTypes.func.isRequired
+  handler: PropTypes.func
 };
