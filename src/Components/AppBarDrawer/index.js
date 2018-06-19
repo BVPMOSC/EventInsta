@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Menu, Image, Card, Popup, Button } from 'semantic-ui-react'
 import * as firebase from 'firebase'
 
+import OutsideAlerter from '../OutsideAlerter'
+
 const userMenuStyle = {
 	boxShadow: 'none'
 }
@@ -41,45 +43,46 @@ class AppBarDrawer extends Component {
   render () {
     const {children} = this.props
     return (
-			<div>
-
+    		<OutsideAlerter handler={this.handleClose}>
 				<div>
 
-					<Menu pointing secondary  fixed="top" color='white' inverted size="massive" className="shadow grad" >
-					{children}
+					<div>
 
-						<Menu.Menu position='right'>
-							<Popup
-							open={this.state.open}
+						<Menu pointing secondary  fixed="top" color='white' inverted size="massive" className="shadow grad" >
+						{children}
 
-								content={
-										<Card style={userMenuStyle}>
-									<Card.Content style={userMenuContent}>
-										<Image floated='right' size='small' src={this.state.photoUrl} avatar />
-										<Card.Header>
-											{this.state.userName}
-										</Card.Header>
-										<Card.Meta>
-											{this.state.useremail}
-										</Card.Meta>
+							<Menu.Menu position='right'>
+								<Popup
+								open={this.state.open}
 
-									</Card.Content>
-									<Card.Content extra>
-										<div className='ui two buttons'>
-											<Button basic color='red' onClick={this.handlesignOut}>Logout</Button>
-										</div>
-									</Card.Content>
-								</Card>
-										}
-								trigger={<Menu.Item name='' icon={`user circle outline`} onClick={this.handleToggle} />}
+									content={
+											<Card style={userMenuStyle}>
+										<Card.Content style={userMenuContent}>
+											<Image floated='right' size='small' src={this.state.photoUrl} avatar />
+											<Card.Header>
+												{this.state.userName}
+											</Card.Header>
+											<Card.Meta>
+												{this.state.useremail}
+											</Card.Meta>
 
-							/> </Menu.Menu>
-					</Menu>
+										</Card.Content>
+										<Card.Content extra>
+											<div className='ui two buttons'>
+												<Button basic color='red' onClick={this.handlesignOut}>Logout</Button>
+											</div>
+										</Card.Content>
+									</Card>
+											}
+									trigger={<Menu.Item name='' icon={`user circle outline`} onClick={this.handleToggle} />}
+
+								/> </Menu.Menu>
+						</Menu>
+
+					</div>
 
 				</div>
-
-			</div>
-
+			</OutsideAlerter>
     )
   }
 }
