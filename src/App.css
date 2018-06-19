@@ -28,7 +28,18 @@ button {
   font-family: 'Open Sans', sans-serif!important;
   font-size: 1.6rem;
 }
+.ei-simpler-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #505050;
+  font-family: 'Archivo Black', sans-serif;
+   font-size: 4rem;
+   font-weight: 500;
+   width: 100vw;
+   height: 100vh;
+}
 
 @media only screen and (max-width: 768px) {
- 
+
 }

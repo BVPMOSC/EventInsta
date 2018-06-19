@@ -94,7 +94,7 @@ class App extends Component {
   render () {
     return (
       <div>
-          { this.state.loading && <div>Loading...</div> }
+          { this.state.loading && <div className='ei-simpler-loader grad' >Loading...</div> }
           { !this.state.loading && this.state.authed && (
             <div>
               <AppBarDrawer
@@ -113,7 +113,7 @@ class App extends Component {
 							{this.state.activeItem === 'New' ? <AddPage/> : <div/>}
 
               <Footer />
-            </div>) 
+            </div>)
           }
 
           { !this.state.loading && !this.state.authed && (<LoginPage gsignin={this.handleGoogleSignIn} />) }
