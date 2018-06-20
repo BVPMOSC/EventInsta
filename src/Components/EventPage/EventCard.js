@@ -57,7 +57,7 @@ render ()  {
 
             }}
             icon='bookmark'
-
+            className={ this.state.subscribed ? 'subscribed' : 'will-go'}
             label={{ as: 'a', basic: true, content: `${this.state.going}` }}
             labelPosition='right'
             content={this.state.subscribed === true?'going': 'will go'}

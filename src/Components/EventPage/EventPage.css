@@ -18,6 +18,15 @@
   font-weight: 500;
   margin-left: 10vw;
 }
+.will-go .button {
+  background-color:#C33764!important;
+  color:white!important;
+  transition:all .25s ease-in-out!important;
+}
+.subscribed .button {
+  background-color:#1D2671!important;
+  color:white!important;
+}
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
     .ei-date h1{
