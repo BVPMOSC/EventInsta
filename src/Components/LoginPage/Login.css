@@ -140,9 +140,12 @@ input:focus~.login__bar:after {
 
 @media (min-width: 500px) {
     .lp-full{
-        height: 100vh;
-        background-size: cover !important;
-        background: url('https://raw.githubusercontent.com/BVPMOSC/gsoc/master/back.png');
+        height: 100%;
+        background-image: url('https://raw.githubusercontent.com/BVPMOSC/gsoc/master/back.png');
+        background-position-x: center;
+        background-position-y: top;
+        background-size: cover;
+        background-attachment: fixed;
     }
     .login-form{
         padding-top:15vh;
