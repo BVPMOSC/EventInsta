@@ -73,10 +73,14 @@
     text-decoration: none;
     color: #007ee5
 }
-.login__footer{
-    position: absolute;
-    bottom: 0;
+
+@media (min-height: 480px) {
+    .login__footer{
+        position: absolute;
+        bottom: 0;
+    }
 }
+
 .login__form .login__button {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
