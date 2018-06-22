@@ -132,8 +132,9 @@ export default class SocietyCard extends Component {
             <Button
               onClick={this.handleFollow}
               color="blue"
+              className="will-go"
               label={
-                <Label basic color="blue">
+                <Label basic color="rgba(34,36,38,.15)">
                   {fcount? fcount:0}
                 </Label>
               }
