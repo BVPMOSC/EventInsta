@@ -36,7 +36,7 @@ export default class SocietyCard extends Component {
         )
           .then(response => {
             if (response.status < 200 || response.status >= 400) {
-              // eslint-disable-next-line 
+              // eslint-disable-next-line
               throw "Error subscribing to topic: " +
                 response.status +
                 " - " +
@@ -132,7 +132,7 @@ export default class SocietyCard extends Component {
             <Button
               onClick={this.handleFollow}
               color="blue"
-              className="will-go"
+              className={this.props.followed? 'subscribed' : 'will-go'}
               label={
                 <Label basic color="rgba(34,36,38,.15)">
                   {fcount? fcount:0}
