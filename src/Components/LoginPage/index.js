@@ -26,6 +26,7 @@ const style = (
 
 export default class Login extends Component {
   // noinspection SpellCheckingInspection
+  sourceUrl = 'https://github.com/bvpmosc/eventinsta';
   constructor(props) {
     super(props);
     this.state = {
@@ -34,8 +35,12 @@ export default class Login extends Component {
       loading:false
     };
     this.handleLogin = this.handleLogin.bind(this);
+    this.sourceButtonHandler = this.sourceButtonHandler.bind(this);
   }
 
+  sourceButtonHandler(){
+    window.open(this.sourceUrl,"_blank");
+  }
   handleLogin(e) {
     e.preventDefault();
     const { email, password } = this.state;
@@ -138,6 +143,7 @@ export default class Login extends Component {
             icon="github"
             content="Source"
             target="_blank"
+            onClick={this.sourceButtonHandler}
           />
         </div>
       </div>
