@@ -86,7 +86,7 @@
     font-weight: 700;
     text-transform: uppercase;
     text-align: center;
-    width: 100vw;
+    width: calc(100vw - 0.4rem);
     background: #007ee5;
     position: relative;
     border: none;
