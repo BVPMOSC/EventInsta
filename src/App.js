@@ -108,10 +108,11 @@ class App extends Component {
 						<Menu.Item name='Tags' active={this.state.activeItem === 'Tags'} onClick={this.handleItemClick} />
 					     {this.state.isAdmin ? 	<Menu.Item name='New' active={this.state.activeItem === 'New'} onClick={this.handleItemClick} /> : (<div/>)}
 							</AppBarDrawer>
-							{this.state.activeItem === 'Home' ? <EventPage/> : <div/>}
-							{this.state.activeItem === 'Tags' ? <TagsPage/> : <div/>}
-							{this.state.activeItem === 'New' ? <AddPage/> : <div/>}
-
+              <div style={{marginBottom: '44px'}}>
+  							{this.state.activeItem === 'Home' ? <EventPage/> : <div/>}
+  							{this.state.activeItem === 'Tags' ? <TagsPage/> : <div/>}
+  							{this.state.activeItem === 'New' ? <AddPage/> : <div/>}
+              </div>
               <Footer />
             </div>)
           }
