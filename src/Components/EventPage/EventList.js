@@ -6,8 +6,8 @@ import './EventPage.css'
 const EventList = ({ events, subs }) => {
     const listItems = events.map((event) =>
       // <div className="column-mobi">
-      <Grid.Column mobile={16} tablet={8} computer={4}>
-          <EventCard key={event.key} event={event} subscribed={subs.includes(event.key)}/>
+      <Grid.Column mobile={16} tablet={8} computer={4} key={event.key}>
+          <EventCard event={event} subscribed={subs.includes(event.key)}/>
       </Grid.Column>
       // </div>
     );

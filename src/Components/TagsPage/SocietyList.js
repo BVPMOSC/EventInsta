@@ -7,10 +7,9 @@ export default class SocietyList extends Component {
   render() {
     const { socities } = this.props;
     const listItems = socities.map(society => (
-      <Grid.Column mobile={16} tablet={8} computer={5}>
+      <Grid.Column mobile={16} tablet={8} computer={5} key={society.name + society.link}>
         <SocietyCard
           society={society}
-          key={society.name + society.link}
           followed={society.followed}
         />
         <h1> </h1>
