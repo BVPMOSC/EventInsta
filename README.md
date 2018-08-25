@@ -1,7 +1,7 @@
 # EventInsta ![https://travis-ci.org/BVPMOSC/EventInsta](https://travis-ci.org/BVPMOSC/EventInsta.svg?branch=master)
 [![Dependency Status](https://gemnasium.com/badges/github.com/BVPMOSC/EventInsta.svg)](https://gemnasium.com/github.com/BVPMOSC/EventInsta)
 
-EventInsta a tool written in ReactJS consuming firebase services like Hosting, Realtime Database, Authentication, Cloud functions and Cloud Messaging. Interesting Right?
+EventInsta a tool written in ReactJS consuming firebase services like Hosting, Realtime Database, Authentication, Cloud functions and Cloud Messaging and ui components from semantic ui. Interesting Right?
 
 EventInsta is a tool to manage your events is a simple and easy way. Different groups and clubs are represented as tags in EventInsta. Users can register and can follow any tags. Users will receive notifications for tags they are following. For example, if Mozilla one of the tags updates or add any event/meetup then a notification will be sent to all followers following that tag. Users Can RSVP for any events. 
 
@@ -29,3 +29,8 @@ After installation, you can pick any issue from our issues channel or find one y
 There are many places to contribute in this app right now. We are working on improving the design aesthetics, UX, functionality bugs and increasing features set. So even if you are not into React development now you can always help us design issues.
 
 The Page for Organizations heads is in WIP so yes there is one more place to work inside EventInsta 🍺
+
+## Maintainers
+1. Shashwat Gulyani
+2. Aniket Sharma
+3. Piyush Agrawal

@@ -1,33 +1,8 @@
 import React, { Component } from 'react'
-import AppBar from 'material-ui/AppBar'
-import Drawer from 'material-ui/Drawer'
-import Divider from 'material-ui/Divider'
-import { CardHeader } from 'material-ui/Card'
-import MenuItem from 'material-ui/MenuItem'
-import MdLabel from 'react-icons/lib/md/label'
-import MdExitToApp from 'react-icons/lib/md/exit-to-app'
-import MdEvent from 'react-icons/lib/md/event'
-import New from 'react-icons/lib/md/fiber-new'
-import IconButton from 'material-ui/IconButton'
-import NavigationClose from 'material-ui/svg-icons/navigation/close'
-
-import TagsPage from './../TagsPage'
-import { Menu, Segment, Sticky, Image, Card, Popup, Button } from 'semantic-ui-react'
+import { Menu, Image, Card, Popup, Button } from 'semantic-ui-react'
 import * as firebase from 'firebase'
 
-const iconStyles = {
-  marginRight: 16,
-  marginLeft: 24,
-  fontSize: 24,
-  color: 'rgba(0,0,0,0.54)'
-}
-const darkText = {
-  color: 'rgba(0,0,0,0.87)',
-  fontWeight: 500
-}
-const fixedBar = {
-  position: 'fixed'
-}
+import OutsideAlerter from '../OutsideAlerter'
 
 const userMenuStyle = {
 	boxShadow: 'none'
@@ -49,11 +24,33 @@ class AppBarDrawer extends Component {
       useremail: props.useremail,
       activeItem: 'Home'
     }
+
+    this.popupRef = null
   }
+
+  setPopupRef = (node) => {this.popupRef= node;}
+
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-  handleToggle = () => this.setState({ open: !this.state.open });
+  handleToggle = () => {this.setState({ open: !this.state.open });}
 
   handleClose = () => this.setState({ open: false });
+
+  handleClickOutside = (e) => {
+  	// check if the click is outside popup
+  	// following logic can be moved to OutsideAlerter but would involve passing down popupRef
+  	
+  	if(!this.popupRef.popupCoords) return //defensive coding
+
+  	let {left, right, top, bottom} = this.popupRef.popupCoords
+  	let {clientX, clientY} = e
+  	if(clientX <right && clientX >left) {
+  		if(clientY < top || clientY > bottom) {
+  			this.handleClose()
+  		}
+  	} else {
+  		this.handleClose()
+  	}
+  }
 
   handlesignOut = () => {
     firebase.auth().signOut().then(function () {
@@ -66,47 +63,50 @@ class AppBarDrawer extends Component {
   }
 
   render () {
-    const {isAdmin, children} = this.props
+    const {children} = this.props
     return (
 			<div>
 
 				<div>
 
-					<Menu pointing secondary  fixed="top" color='blue' inverted size="massive">
+					<Menu pointing secondary  fixed="top" color='white' inverted size="massive" className="shadow grad" >
 					{children}
 
 						<Menu.Menu position='right'>
-							<Popup
-							open={this.state.open}
+							<OutsideAlerter handler={this.handleClickOutside} >
+								<Popup
+								ref={this.setPopupRef}
+								open={this.state.open}
 
-								content={
-										<Card style={userMenuStyle}>
-									<Card.Content style={userMenuContent}>
-										<Image floated='right' size='small' src={this.state.photoUrl} avatar />
-										<Card.Header>
-											{this.state.userName}
-										</Card.Header>
-										<Card.Meta>
-											{this.state.useremail}
-										</Card.Meta>
+									content={
+											<Card style={userMenuStyle}>
+										<Card.Content style={userMenuContent}>
+											<Image floated='right' size='small' src={this.state.photoUrl} avatar />
+											<Card.Header>
+												{this.state.userName}
+											</Card.Header>
+											<Card.Meta>
+												{this.state.useremail}
+											</Card.Meta>
 
-									</Card.Content>
-									<Card.Content extra>
-										<div className='ui two buttons'>
-											<Button basic color='red' onClick={this.handlesignOut}>Logout</Button>
-										</div>
-									</Card.Content>
-								</Card>
-										}
-								trigger={<Menu.Item name='' icon={`user outline`} onClick={this.handleToggle} />}
+										</Card.Content>
+										<Card.Content extra>
+											<div className='ui two buttons'>
+												<Button basic color='red' onClick={this.handlesignOut}>Logout</Button>
+											</div>
+										</Card.Content>
+									</Card>
+											}
+									trigger={<Menu.Item name='' icon={`user circle outline`} onClick={this.handleToggle} />}
 
-							/> </Menu.Menu>
+								/>
+							</ OutsideAlerter> 
+							</Menu.Menu>
 					</Menu>
 
 				</div>
 
 			</div>
-
     )
   }
 }

@@ -1,14 +1,8 @@
 import React, { Component } from 'react'
-import TextField from 'material-ui/TextField'
-import RaisedButton from 'material-ui/RaisedButton'
 import { firebaseAuth } from '../../config/constants'
 import { ref } from '../../config/constants'
 import { Input } from 'semantic-ui-react'
 import { Button, Icon, Segment, Grid } from 'semantic-ui-react'
-
-const style = {
-  margin: 12
-}
 
 function handleSend(state) {
   var eventref = ref.child('/events')
@@ -62,8 +56,8 @@ class AddPage extends Component {
         <Grid.Row centered>
           <Grid.Column textAlign='center' >
             <Grid.Row />
-            <Segment color='blue'>
-              <h1> New Event🤘🤘</h1>
+            <Segment color='red'>
+              <h1> New Event  <span role='img' aria-label='yoyo'>🤘🤘</span></h1>
               <br />
               <Input id='addevent_heading'
                 size='large'
@@ -102,7 +96,8 @@ class AddPage extends Component {
                 color='red'
                 onClick={() => { var st = this.state; handleSend(st) }}
               >
-                <Button.Content visible>Add Event 🎉</Button.Content>
+
+                <Button.Content visible>Add Event <span role='img' aria-label='party'>🎉</span> </Button.Content>
                 <Button.Content hidden>
                   <Icon name='right arrow' />
                 </Button.Content>

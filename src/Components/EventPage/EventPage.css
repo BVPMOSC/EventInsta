@@ -1,3 +1,39 @@
+@import url('https://fonts.googleapis.com/css?family=Archivo+Black');
 .topMargin {
-    margin-top: 4rem !important;
+    margin-top: 1rem !important;
+}
+.appstore-card {
+    box-shadow:0px 0px 40px 15px #eee !important;
+}
+.shadow {
+    box-shadow: 1px -1px 20px black!important;
+}
+.ei-date {
+    margin-top:12vh;
+}
+.ei-date h1{
+    color: #505050;
+   font-family: 'Archivo Black', sans-serif;
+  font-size: 4rem;
+  font-weight: 500;
+  margin-left: 10vw;
+}
+.will-go .button{
+  background-color:#C33764!important;
+  color:white!important;
+  transition:all .25s ease-in-out!important;
+}
+.subscribed .button {
+  background-color:#1D2671!important;
+  color:white!important;
+}
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .ei-date h1{
+    width: 100vw;
+    margin-left:0;
+    text-align: center;
+    font-size:3rem;
+    font-weight: 500;
+ }
 }
